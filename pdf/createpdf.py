@@ -1,11 +1,15 @@
+import itertools
+from random import randint
+from statistics import mean
+
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfmetrics import stringWidth
-from reportlab.platypus import Table, TableStyle
+from reportlab.platypus import Table, TableStyle, Image, Flowable
 
-from reportlab.platypus import Flowable
+########################### Auxiliar functions #################################
 
 def splitString(maxLenght, str):
     s = str
@@ -23,7 +27,66 @@ def splitString(maxLenght, str):
     return s
 
 
+def drawCt(c, data, x_offset, y_offset, noficiales):
+    global newh
+    # Space between rows.
+    padding = 17
+
+    xheader = [0 + x_offset, 240 + x_offset]
+    yheader = [h - y_offset - i*padding for i in range(2)]
+    xlist = [x + x_offset for x in [0, 90, 240]]
+    ylist = [h - y_offset - i*padding for i in range(1,noficiales + 2)]
+
+    if ylist[-1] < (newh):
+        newh = ylist[-1]
+
+    c.grid(xheader, yheader)
+    c.grid(xlist, ylist)
+
+    c.drawString(xheader[0] + 75, yheader[0] - padding + 4, "CUERPO TÉCNICO")
+    # j indica la licencia o el nombre y puede tomar valores 0 o 1.
+    # z indica la fila
+    z = -1
+    for y in ylist[:-1]:
+        j = 0
+        z += 1
+        for x in xlist[:-1]:
+                c.drawString(x + 6, y - padding + 4, data[z][j])
+                j+=1
+
+def drawJs(c, data, x_offset, y_offset, njugadores):
+    global newh2
+    # Space between rows.
+    padding = 17
+
+    xheader = [0 + x_offset, 240 + x_offset]
+    yheader = [h - y_offset - i*padding for i in range(2)]
+    xlist = [x + x_offset for x in [0, 90, 240]]
+    ylist = [h - y_offset - i*padding for i in range(1, njugadores + 2)]
+
+    if ylist[-1] < (newh2):
+        newh2 = ylist[-1]
+
+    c.grid(xheader, yheader)
+    c.grid(xlist, ylist)
+
+    c.drawString(xheader[0] + 49, yheader[0] - padding + 4, "JUGADORES SANCIONADOS")
+    # j indica la licencia o el nombre y puede tomar valores 0 o 1.
+    # z indica la fila
+    z = -1
+    for y in ylist[:-1]:
+        j = 0
+        z += 1
+        for x in xlist[:-1]:
+                c.drawString(x + 6, y - padding + 4, data[z][j])
+                j+=1
+
+
+################################################################################
+
 w, h = A4 # 595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
+newh = h  # Auxiliar height
+newh2 = h # Auxiliar height 2
 
 c = canvas.Canvas("previa.pdf", pagesize=A4)
 c.setFont("Helvetica", 12)
@@ -166,6 +229,114 @@ h1.wrapOn(c, w, h)
 h1.drawOn(c, 68.12, h-318)
 h2.wrapOn(c, w, h)
 h2.drawOn(c, 400, h-318)
+
+#El tiempo
+path = 'sol.png'
+I = Image(path)
+I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
+I.drawWidth = 0.6*inch
+dfor = [['MADRID'], [I], ['Lluvia: 75%'], ['Viento: 15 km/h S']]
+tfor = Table(dfor)
+tfor.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER')]))
+tfor.wrapOn(c, w, h)
+tfor.drawOn(c, 252, h-398)
+
+#Equipamiento1
+deq1 = [['', 'Camiseta'], ['Equipamiento', 'Pantalón'], ['', 'Medias']]
+teq1 = Table(deq1, colWidths=[90, 150])
+teq1.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+teq1.wrapOn(c, w, h)
+teq1.drawOn(c, 45, h-470)
+
+#Equipamiento2
+deq2 = [['', 'Camiseta'], ['Equipamiento', 'Pantalón'], ['', 'Medias']]
+teq2 = Table(deq2, colWidths=[90, 150])
+teq2.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+teq2.wrapOn(c, w, h)
+teq2.drawOn(c, 310, h-470)
+
+#Portero1
+dp1 = [['', 'Camiseta'], ['Portero', 'Pantalón'], ['', 'Medias']]
+tp1 = Table(dp1, colWidths=[90, 150])
+tp1.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+tp1.wrapOn(c, w, h)
+tp1.drawOn(c, 45, h-540)
+
+#Portero2
+dp2 = [['', 'Camiseta'], ['Portero', 'Pantalón'], ['', 'Medias']]
+tp2 = Table(dp2, colWidths=[90, 150])
+tp2.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+tp2.wrapOn(c, w, h)
+tp2.drawOn(c, 310, h-540)
+
+#Petos1
+dpe1 = [['Petos', 'Color']]
+tpe1 = Table(dpe1, colWidths=[90, 150])
+tpe1.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (0,0), (-1,-1), 1, colors.black)]))
+tpe1.wrapOn(c, w, h)
+tpe1.drawOn(c, 45, h-575)
+
+#Petos2
+dpe2 = [['Petos', 'Color']]
+tpe2 = Table(dpe2, colWidths=[90, 150])
+tpe2.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (0,0), (-1,-1), 1, colors.black)]))
+tpe2.wrapOn(c, w, h)
+tpe2.drawOn(c, 310, h-575)
+
+#Otros datos 1
+dod1 = [['Suplentes: 5', 'Recogepelotas: ¿?'], ['Oficiales: 5', 'Fotógrafo: ¿?']]
+tod1 = Table(dod1, colWidths=[90, 150])
+tod1.setStyle(TableStyle([('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (0,0), (-1,-1), 1, colors.black)]))
+tod1.wrapOn(c, w, h)
+tod1.drawOn(c, 45, h-628)
+
+#Otros datos 2
+dod2 = [['Suplentes: 5', 'Recogepelotas: ¿?'], ['Oficiales: 5', 'Fotógrafo: ¿?']]
+tod2 = Table(dod2, colWidths=[90, 150])
+tod2.setStyle(TableStyle([('BOX', (0,0), (-1,-1), 1, colors.black),
+('INNERGRID', (0,0), (-1,-1), 1, colors.black)]))
+tod2.wrapOn(c, w, h)
+tod2.drawOn(c, 310, h-628)
+
+#Equipo técnico 1
+eqa.setFont("Helvetica", 10)
+c.drawText(eqa)
+noficiales1 = 2
+noficiales2 = 1
+oficiales1 = [("tipo", "nombre"), ("tipo", "nombre2"), ("tipo3.", "nombre3")]
+oficiales2 = [("tipo", "nombre"), ("tipo", "nombre2"), ("tipo3.", "nombre3")]
+drawCt(c, oficiales1, 45, h-196.8, noficiales1)
+drawCt(c, oficiales2, 310, h-196.8, noficiales2)
+
+#A partir de aquí, la altura es variable. Usaremos newh en vez de h.
+nsancionados1 = 1
+nsancionados2 = 2
+sancionados1 = [("tipo", "nombre"), ("tipo", "nombre2"), ("tipo3.", "nombre3")]
+sancionados2 = [("tipo", "nombre"), ("tipo", "nombre2"), ("tipo3.", "nombre3")]
+drawJs(c, sancionados1, 45, h-newh+17, nsancionados1)
+drawJs(c, sancionados2, 310, h-newh+17, nsancionados2)
+
+#Delegado de campo
+eqa.setFont("Helvetica-Bold", 10)
+c.drawText(eqa)
+c.drawString(45, newh2-20, "Delegado de campo:")
+eqa.setFont("Helvetica", 10)
+c.drawText(eqa)
+c.drawString(147, newh2-20, "Juan Hernández Maeso")
+
 
 c.showPage()
 c.save()

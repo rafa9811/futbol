@@ -1,3 +1,6 @@
+import sys
+import os
+
 import itertools
 from random import randint
 from statistics import mean
@@ -8,6 +11,9 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.platypus import Table, TableStyle, Image, Flowable
+
+sys.path.append("..")
+from forecast.forecast import *
 
 ########################### Auxiliar functions #################################
 
@@ -81,6 +87,9 @@ def drawJs(c, data, x_offset, y_offset, njugadores):
                 c.drawString(x + 6, y - padding + 4, data[z][j])
                 j+=1
 
+def pathIcon(id):
+    path = 'icons/' + str(id) + '.png'
+    return path
 
 ################################################################################
 
@@ -136,7 +145,6 @@ t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
 ('FONTNAME', (0,0), (-1,-1), 'Helvetica-Bold')]))
 t.wrapOn(c, w, h)
 t.drawOn(c, 45, h-170)
-
 
 #Equipo Arbitral
 arbitro = "D. Rafael Hidalgo Alejo"
@@ -230,12 +238,15 @@ h1.drawOn(c, 68.12, h-318)
 h2.wrapOn(c, w, h)
 h2.drawOn(c, 400, h-318)
 
-#El tiempo
-path = 'sol.png'
+#El tiempo: prob_precipitacion, estado_cielo, vientodir, vientovel, tmax, tmin
+tiempo = get_forecast('Barcelona', '07', '24')
+print(tiempo)
+path = pathIcon(tiempo['estado_cielo'])
 I = Image(path)
 I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
 I.drawWidth = 0.6*inch
-dfor = [['MADRID'], [I], ['Lluvia: 75%'], ['Viento: 15 km/h S']]
+dfor = [['Barcelona'], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
+        ['Viento: ' + tiempo['vientovel'] + ' km/h ' + tiempo['vientodir']]]
 tfor = Table(dfor)
 tfor.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER')]))
 tfor.wrapOn(c, w, h)

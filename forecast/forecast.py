@@ -5,7 +5,21 @@ import requests
 import xml.etree.ElementTree as et
 from datetime import datetime
 
-DRIVER_PATH = os.getcwd()[:-8] + 'chromedriver'
+path_list = os.getcwd().split('/')
+generic_path = ""
+
+for elem in path_list[1:]:
+    if not elem == 'futbol':
+        generic_path += '/'
+        generic_path += elem
+    else:
+        generic_path += '/'
+        generic_path += elem
+        break
+
+DRIVER_PATH = generic_path + '/chromedriver'
+# print(os.getcwd().split('/'))
+
 options = Options()
 options.headless = True
 options.add_argument("--window-size=1920,1200")
@@ -18,7 +32,9 @@ def get_id(town):
     driver.find_element_by_xpath("//*[@id='buscar_municipio']").send_keys(town)
     driver.find_element_by_xpath("//*[@id='columns']/div/div[2]/div[2]/div[1]/div/form/input[5]").click()
 
-    if not driver.current_url.startswith('http://www.aemet.es/es/eltiempo/prediccion/municipios?modo=and&orden=n&tipo=sta&str='):
+    if not driver.current_url.startswith('http://www.aemet.es/es/eltiempo/prediccion/municipios?'):
+        print(driver.current_url)
+        print("Entra aqui")
         url = driver.current_url
         id = url.split("id")[-1]
         return id
@@ -34,14 +50,15 @@ def get_id(town):
 
 def download_xml(id):
     url = "http://www.aemet.es/xml/municipios/localidad_" + id + ".xml"
+    print(url)
     response = requests.get(url)
 
-    with open('data.xml', 'wb') as file:
+    with open(generic_path + '/forecast/data.xml', 'wb') as file:
         file.write(response.content)
 
 
 def parse_xml(month, day):
-    tree = et.parse('data.xml')
+    tree = et.parse(generic_path + '/forecast/data.xml')
     root = tree.getroot()
     prediction = root.find('prediccion')
 
@@ -63,7 +80,7 @@ def parse_xml(month, day):
     tmax = temperatura.find('maxima').text
     tmin = temperatura.find('minima').text
 
-    return prob_precipitacion, estado_cielo, vientodir, vientovel, tmax, tmin
+    return {'prob_precipitacion': prob_precipitacion, 'estado_cielo': estado_cielo, 'vientodir': vientodir, 'vientovel': vientovel, 'tmax': tmax, 'tmin': tmin}
 
 
 def get_forecast(town, month, day):

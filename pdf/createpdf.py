@@ -97,6 +97,8 @@ w, h = A4 # 595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
 newh = h  # Auxiliar height
 newh2 = h # Auxiliar height 2
 
+print("Confeccionando pdf...")
+
 c = canvas.Canvas("previa.pdf", pagesize=A4)
 c.setFont("Helvetica", 12)
 
@@ -239,18 +241,24 @@ h2.wrapOn(c, w, h)
 h2.drawOn(c, 400, h-318)
 
 #El tiempo: prob_precipitacion, estado_cielo, vientodir, vientovel, tmax, tmin
-tiempo = get_forecast('Barcelona', '07', '24')
-print(tiempo)
+print("Escaneando meteorología en la dirección y fecha determinadas...")
+eqa.setFont("Helvetica", 10)
+c.drawText(eqa)
+
+tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
+# tiempo = get_forecast('Llerena', '07', '28')
 path = pathIcon(tiempo['estado_cielo'])
 I = Image(path)
 I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
 I.drawWidth = 0.6*inch
-dfor = [['Barcelona'], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
+dfor = [['FUENLABRADA'], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
         ['Viento: ' + tiempo['vientovel'] + ' km/h ' + tiempo['vientodir']]]
 tfor = Table(dfor)
 tfor.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER')]))
 tfor.wrapOn(c, w, h)
 tfor.drawOn(c, 252, h-398)
+c.drawString(245, h-342, tiempo['tmax'] + 'ºC')
+c.drawString(323, h-342, tiempo['tmin'] + 'ºC')
 
 #Equipamiento1
 deq1 = [['', 'Camiseta'], ['Equipamiento', 'Pantalón'], ['', 'Medias']]
@@ -347,7 +355,6 @@ c.drawString(45, newh2-20, "Delegado de campo:")
 eqa.setFont("Helvetica", 10)
 c.drawText(eqa)
 c.drawString(147, newh2-20, "Juan Hernández Maeso")
-
 
 c.showPage()
 c.save()

@@ -14,6 +14,7 @@ from reportlab.platypus import Table, TableStyle, Image, Flowable
 
 sys.path.append("..")
 from forecast.forecast import *
+from excel.extract import *
 
 ########################### Auxiliar functions #################################
 
@@ -91,6 +92,13 @@ def pathIcon(id):
     path = 'icons/' + str(id) + '.png'
     return path
 
+def transform_color(color):
+
+    red = float(color[0])/255
+    green = float(color[1])/255
+    blue = float(color[2])/255
+    return (red, green, blue)
+
 ################################################################################
 
 w, h = A4 # 595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
@@ -104,6 +112,21 @@ c.setFont("Helvetica", 12)
 
 # Título de documento.
 c.drawString(235, h - 50, "PREVIA DE PARTIDO")
+
+#Tabla de equipos
+equipo1 = "CD Galapagar"
+equipo2 = "Fepe Getafe III"
+
+data = [[equipo1, equipo2]]
+t = Table(data, colWidths=[255, 255], rowHeights=[70])
+t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
+('INNERGRID', (0,0), (-1,-1), 1, colors.black),
+('ALIGN',(0,0),(-1,-1),'CENTER'),
+('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+('BOX', (0,0), (-1,-1), 1, colors.black),
+('FONTNAME', (0,0), (-1,-1), 'Helvetica-Bold')]))
+t.wrapOn(c, w, h)
+t.drawOn(c, 45, h-170)
 
 #Grid de datos principales.
 xl1 = [45, 150, 280, 350, 450, 555]
@@ -130,23 +153,6 @@ tc = c.beginText(455, h-80)
 tc.textLines( splitString(15, campo) )
 c.drawText(tc)
 
-#Grid de equipos
-# c.grid(xl2, yl2)
-equipo1 = "CF SAN AGUSTÍN DEL GUADALIX 'A'"
-equipo2 = "CD DOSA"
-# c.drawString(50, h-140, equipo1)
-# c.drawString(302, h-140, equipo2)
-
-data = [[equipo1, equipo2]]
-t = Table(data, colWidths=[255, 255], rowHeights=[70])
-t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
-('INNERGRID', (0,0), (-1,-1), 1, colors.black),
-('ALIGN',(0,0),(-1,-1),'CENTER'),
-('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-('BOX', (0,0), (-1,-1), 1, colors.black),
-('FONTNAME', (0,0), (-1,-1), 'Helvetica-Bold')]))
-t.wrapOn(c, w, h)
-t.drawOn(c, 45, h-170)
 
 #Equipo Arbitral
 arbitro = "D. Rafael Hidalgo Alejo"
@@ -261,38 +267,123 @@ c.drawString(245, h-342, tiempo['tmax'] + 'ºC')
 c.drawString(323, h-342, tiempo['tmin'] + 'ºC')
 
 #Equipamiento1
-deq1 = [['', 'Camiseta'], ['Equipamiento', 'Pantalón'], ['', 'Medias']]
-teq1 = Table(deq1, colWidths=[90, 150])
+plfirstkit = get_player_first_kit(equipo1)
+
+shirt1 = transform_color(plfirstkit['shirt1'])
+shirt2 = transform_color(plfirstkit['shirt2'])
+shorts1 = transform_color(plfirstkit['shorts1'])
+shorts2 = transform_color(plfirstkit['shorts2'])
+shocks1 = transform_color(plfirstkit['shocks1'])
+shocks2 = transform_color(plfirstkit['shocks2'])
+customColor1 = colors.Color(red=shirt1[0], green=shirt1[1], blue=shirt1[2])
+customColor2 = colors.Color(red=shirt2[0], green=shirt2[1], blue=shirt2[2])
+customColor3 = colors.Color(red=shorts1[0], green=shorts1[1], blue=shorts1[2])
+customColor4 = colors.Color(red=shorts2[0], green=shorts2[1], blue=shorts2[2])
+customColor5 = colors.Color(red=shocks1[0], green=shocks1[1], blue=shocks1[2])
+customColor6 = colors.Color(red=shocks2[0], green=shocks2[1], blue=shocks2[2])
+
+deq1 = [['Camiseta', '', ''], ['Pantalón', '', ''], ['Medias', '', '']]
+teq1 = Table(deq1, colWidths=[90, 75, 75])
 teq1.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
 ('BOX', (0,0), (-1,-1), 1, colors.black),
-('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+('INNERGRID', (1,0), (-1,-1), 1, colors.black),
+('BACKGROUND',(1,0),(1,0), customColor1), #camiseta1
+('BACKGROUND',(2,0),(2,0), customColor2), #camiseta2
+('BACKGROUND',(1,1),(1,1), customColor3), #pantalón1
+('BACKGROUND',(2,1),(2,1), customColor4), #pantalón2
+('BACKGROUND',(1,2),(1,2), customColor5), #medias1
+('BACKGROUND',(-1,-1),(-1,-1), customColor6), #medias2
+]))
 teq1.wrapOn(c, w, h)
 teq1.drawOn(c, 45, h-470)
 
-#Equipamiento2
-deq2 = [['', 'Camiseta'], ['Equipamiento', 'Pantalón'], ['', 'Medias']]
-teq2 = Table(deq2, colWidths=[90, 150])
+# #Equipamiento2
+plfirstkit = get_player_first_kit(equipo2)
+shirt1 = transform_color(plfirstkit['shirt1'])
+shirt2 = transform_color(plfirstkit['shirt2'])
+shorts1 = transform_color(plfirstkit['shorts1'])
+shorts2 = transform_color(plfirstkit['shorts2'])
+shocks1 = transform_color(plfirstkit['shocks1'])
+shocks2 = transform_color(plfirstkit['shocks2'])
+customColor1 = colors.Color(red=shirt1[0], green=shirt1[1], blue=shirt1[2])
+customColor2 = colors.Color(red=shirt2[0], green=shirt2[1], blue=shirt2[2])
+customColor3 = colors.Color(red=shorts1[0], green=shorts1[1], blue=shorts1[2])
+customColor4 = colors.Color(red=shorts2[0], green=shorts2[1], blue=shorts2[2])
+customColor5 = colors.Color(red=shocks1[0], green=shocks1[1], blue=shocks1[2])
+customColor6 = colors.Color(red=shocks2[0], green=shocks2[1], blue=shocks2[2])
+
+deq2 = [['Camiseta', '', ''], ['Pantalón', '', ''], ['Medias', '', '']]
+teq2 = Table(deq2, colWidths=[90, 75, 75])
 teq2.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
 ('BOX', (0,0), (-1,-1), 1, colors.black),
-('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+('INNERGRID', (1,0), (-1,-1), 1, colors.black),
+('BACKGROUND',(1,0),(1,0), customColor1), #camiseta1
+('BACKGROUND',(2,0),(2,0), customColor2), #camiseta2
+('BACKGROUND',(1,1),(1,1), customColor3), #pantalón1
+('BACKGROUND',(2,1),(2,1), customColor4), #pantalón2
+('BACKGROUND',(1,2),(1,2), customColor5), #medias1
+('BACKGROUND',(-1,-1),(-1,-1), customColor6) #medias2
+]))
 teq2.wrapOn(c, w, h)
 teq2.drawOn(c, 310, h-470)
 
 #Portero1
-dp1 = [['', 'Camiseta'], ['Portero', 'Pantalón'], ['', 'Medias']]
-tp1 = Table(dp1, colWidths=[90, 150])
+plfirstkit = get_gk_first_kit(equipo1)
+shirt1 = transform_color(plfirstkit['shirt1'])
+shirt2 = transform_color(plfirstkit['shirt2'])
+shorts1 = transform_color(plfirstkit['shorts1'])
+shorts2 = transform_color(plfirstkit['shorts2'])
+shocks1 = transform_color(plfirstkit['shocks1'])
+shocks2 = transform_color(plfirstkit['shocks2'])
+customColor1 = colors.Color(red=shirt1[0], green=shirt1[1], blue=shirt1[2])
+customColor2 = colors.Color(red=shirt2[0], green=shirt2[1], blue=shirt2[2])
+customColor3 = colors.Color(red=shorts1[0], green=shorts1[1], blue=shorts1[2])
+customColor4 = colors.Color(red=shorts2[0], green=shorts2[1], blue=shorts2[2])
+customColor5 = colors.Color(red=shocks1[0], green=shocks1[1], blue=shocks1[2])
+customColor6 = colors.Color(red=shocks2[0], green=shocks2[1], blue=shocks2[2])
+
+dp1 = [['Camiseta portero', '', ''], ['Pantalón portero', '', ''], ['Medias portero', '', '']]
+tp1 = Table(dp1, colWidths=[90, 75, 75])
 tp1.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
 ('BOX', (0,0), (-1,-1), 1, colors.black),
-('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+('INNERGRID', (1,0), (-1,-1), 1, colors.black),
+('BACKGROUND',(1,0),(1,0), customColor1), #camiseta1
+('BACKGROUND',(2,0),(2,0), customColor2), #camiseta2
+('BACKGROUND',(1,1),(1,1), customColor3), #pantalón1
+('BACKGROUND',(2,1),(2,1), customColor4), #pantalón2
+('BACKGROUND',(1,2),(1,2), customColor5), #medias1
+('BACKGROUND',(-1,-1),(-1,-1), customColor6) #medias2
+]))
 tp1.wrapOn(c, w, h)
 tp1.drawOn(c, 45, h-540)
 
 #Portero2
-dp2 = [['', 'Camiseta'], ['Portero', 'Pantalón'], ['', 'Medias']]
-tp2 = Table(dp2, colWidths=[90, 150])
+plfirstkit = get_gk_first_kit(equipo2)
+shirt1 = transform_color(plfirstkit['shirt1'])
+shirt2 = transform_color(plfirstkit['shirt2'])
+shorts1 = transform_color(plfirstkit['shorts1'])
+shorts2 = transform_color(plfirstkit['shorts2'])
+shocks1 = transform_color(plfirstkit['shocks1'])
+shocks2 = transform_color(plfirstkit['shocks2'])
+customColor1 = colors.Color(red=shirt1[0], green=shirt1[1], blue=shirt1[2])
+customColor2 = colors.Color(red=shirt2[0], green=shirt2[1], blue=shirt2[2])
+customColor3 = colors.Color(red=shorts1[0], green=shorts1[1], blue=shorts1[2])
+customColor4 = colors.Color(red=shorts2[0], green=shorts2[1], blue=shorts2[2])
+customColor5 = colors.Color(red=shocks1[0], green=shocks1[1], blue=shocks1[2])
+customColor6 = colors.Color(red=shocks2[0], green=shocks2[1], blue=shocks2[2])
+
+dp2 = [['Camiseta portero', '', ''], ['Pantalón portero', '', ''], ['Medias portero', '', '']]
+tp2 = Table(dp2, colWidths=[90, 75, 75])
 tp2.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER'),
 ('BOX', (0,0), (-1,-1), 1, colors.black),
-('INNERGRID', (1,0), (-1,-1), 1, colors.black)]))
+('INNERGRID', (1,0), (-1,-1), 1, colors.black),
+('BACKGROUND',(1,0),(1,0), customColor1), #camiseta1
+('BACKGROUND',(2,0),(2,0), customColor2), #camiseta2
+('BACKGROUND',(1,1),(1,1), customColor3), #pantalón1
+('BACKGROUND',(2,1),(2,1), customColor4), #pantalón2
+('BACKGROUND',(1,2),(1,2), customColor5), #medias1
+('BACKGROUND',(-1,-1),(-1,-1), customColor6) #medias2
+]))
 tp2.wrapOn(c, w, h)
 tp2.drawOn(c, 310, h-540)
 

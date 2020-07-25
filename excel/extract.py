@@ -1,78 +1,152 @@
 import openpyxl
+import xlrd
+import os
+
+
+def load_w():
+    path_list = os.getcwd().split('/')
+    generic_path = ""
+
+    for elem in path_list[1:]:
+        if not elem == 'futbol':
+            generic_path += '/'
+            generic_path += elem
+        else:
+            generic_path += '/'
+            generic_path += elem
+            break
+    path = generic_path + '/excel/teams_data.xls'
+    book = xlrd.open_workbook(path, formatting_info=True)
+    sheet = book.sheet_by_index(0)
+    return book, sheet
 
 
 def get_teams():
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
+    book, sheet = load_w()
     teamlist = []
-    for i in range(5, 45):
-        teamlist.append(sheet['A'+str(i)].value)
+    for i in range(4, 44):
+        teamlist.append(sheet.cell(i, 0).value)
     return teamlist
 
 
 def team_row(team):
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
-    for i in range(5, 45):
-        if sheet['A'+str(i)].value == team:
+    book, sheet = load_w()
+    for i in range(4, 44):
+        if sheet.cell(i, 0).value == team:
             return i
     return -1
 
 
-def get_player_first_kit(team):
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
-    row = str(team_row(team))
+def get_group(team):
+    book, sheet = load_w()
+    row = team_row(team)
 
-    shirt1 = sheet['G'+row].fill.bgColor.rgb
-    shirt2 = sheet['H'+row].fill.bgColor.rgb
-    shorts1 = sheet['I'+row].fill.bgColor.rgb
-    shorts2 = sheet['J'+row].fill.bgColor.rgb
-    shocks1 = sheet['K'+row].fill.bgColor.rgb
-    shocks2 = sheet['L'+row].fill.bgColor.rgb
+    return str(sheet.cell(row, 1).value)
+
+
+def get_player_first_kit(team):
+    book, sheet = load_w()
+    row = team_row(team)
+
+    xfx = sheet.cell_xf_index(row, 6)
+    shirt1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 7)
+    shirt2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 8)
+    shorts1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 9)
+    shorts2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 10)
+    shocks1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 11)
+    shocks2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
 
     return {'shirt1':shirt1, 'shirt2':shirt2, 'shorts1':shorts1, 'shorts2':shorts2, 'shocks1':shocks1, 'shocks2':shocks2}
 
 
 def get_gk_first_kit(team):
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
-    row = str(team_row(team))
-    shirt1 = sheet['M'+row].fill.bgColor.rgb
-    shirt2 = sheet['N'+row].fill.bgColor.rgb
-    shorts1 = sheet['O'+row].fill.bgColor.rgb
-    shorts2 = sheet['P'+row].fill.bgColor.rgb
-    shocks1 = sheet['Q'+row].fill.bgColor.rgb
-    shocks2 = sheet['R'+row].fill.bgColor.rgb
+    book, sheet = load_w()
+    row = team_row(team)
+
+    xfx = sheet.cell_xf_index(row, 12)
+    shirt1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 13)
+    shirt2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 14)
+    shorts1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 15)
+    shorts2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 16)
+    shocks1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 17)
+    shocks2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
 
     return {'shirt1':shirt1, 'shirt2':shirt2, 'shorts1':shorts1, 'shorts2':shorts2, 'shocks1':shocks1, 'shocks2':shocks2}
 
 
 def get_player_scnd_kit(team):
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
-    row = str(team_row(team))
+    book, sheet = load_w()
+    row = team_row(team)
 
-    shirt1 = sheet['S'+row].fill.bgColor.rgb
-    shirt2 = sheet['T'+row].fill.bgColor.rgb
-    shorts1 = sheet['U'+row].fill.bgColor.rgb
-    shorts2 = sheet['V'+row].fill.bgColor.rgb
-    shocks1 = sheet['W'+row].fill.bgColor.rgb
-    shocks2 = sheet['X'+row].fill.bgColor.rgb
+    xfx = sheet.cell_xf_index(row, 18)
+    shirt1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 19)
+    shirt2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 20)
+    shorts1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 21)
+    shorts2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 22)
+    shocks1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 23)
+    shocks2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
 
     return {'shirt1':shirt1, 'shirt2':shirt2, 'shorts1':shorts1, 'shorts2':shorts2, 'shocks1':shocks1, 'shocks2':shocks2}
 
 
 def get_gk_scnd_kit(team):
-    ps = openpyxl.load_workbook('teams_data.xlsx')
-    sheet = ps['Hoja 1']
-    row = str(team_row(team))
+    book, sheet = load_w()
+    row = team_row(team)
 
-    shirt1 = sheet['Y'+row].fill.bgColor.rgb
-    shirt2 = sheet['Z'+row].fill.bgColor.rgb
-    shorts1 = sheet['AA'+row].fill.bgColor.rgb
-    shorts2 = sheet['AB'+row].fill.bgColor.rgb
-    shocks1 = sheet['AC'+row].fill.bgColor.rgb
-    shocks2 = sheet['AD'+row].fill.bgColor.rgb
+    xfx = sheet.cell_xf_index(row, 24)
+    shirt1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 25)
+    shirt2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 26)
+    shorts1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 27)
+    shorts2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 28)
+    shocks1 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+
+    xfx = sheet.cell_xf_index(row, 29)
+    shocks2 = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
 
     return {'shirt1':shirt1, 'shirt2':shirt2, 'shorts1':shorts1, 'shorts2':shorts2, 'shocks1':shocks1, 'shocks2':shocks2}
+
+
+def get_bibs(team):
+    book, sheet = load_w()
+    row = team_row(team)
+    xfx = sheet.cell_xf_index(row, 30)
+    bibs = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
+    return bibs

@@ -21,6 +21,24 @@ def load_w():
     return book, sheet
 
 
+def load_coachs(team):
+    path_list = os.getcwd().split('/')
+    generic_path = ""
+
+    for elem in path_list[1:]:
+        if not elem == 'futbol':
+            generic_path += '/'
+            generic_path += elem
+        else:
+            generic_path += '/'
+            generic_path += elem
+            break
+    path = generic_path + '/excel/' + team + '.xls'
+    book = xlrd.open_workbook(path, formatting_info=True)
+    sheet = book.sheet_by_index(0)
+    return book, sheet
+
+
 def get_teams():
     book, sheet = load_w()
     teamlist = []
@@ -42,6 +60,21 @@ def get_group(team):
     row = team_row(team)
 
     return str(sheet.cell(row, 1).value)
+
+
+def get_coachs(team):
+    book, sheet = load_coachs(team)
+    list = []
+    i = 2
+    j = 8
+    name = str(sheet.cell(i, j).value)
+    job = str(sheet.cell(i, j+1).value)
+    while name != "":
+        list.append((job, name))
+        i += 1
+        name = str(sheet.cell(i, j).value)
+        job = str(sheet.cell(i, j+1).value)
+    return list
 
 
 def get_player_first_kit(team):

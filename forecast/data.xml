@@ -8,16 +8,16 @@
 		<copyright>&#169; AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</copyright>
 		<nota_legal>http://www.aemet.es/es/nota_legal</nota_legal>
 	</origen>
-	<elaborado>2020-07-22T15:25:44</elaborado>
+	<elaborado>2020-07-26T19:01:46</elaborado>
 	<nombre>Llerena</nombre>
 	<provincia>Badajoz</provincia>
 	<prediccion>
-		<dia fecha="2020-07-22">
+		<dia fecha="2020-07-26">
 			<prob_precipitacion periodo="00-24"></prob_precipitacion>
 			<prob_precipitacion periodo="00-12"></prob_precipitacion>
 			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
 			<prob_precipitacion periodo="00-06"></prob_precipitacion>
-			<prob_precipitacion periodo="06-12">35</prob_precipitacion>
+			<prob_precipitacion periodo="06-12">0</prob_precipitacion>
 			<prob_precipitacion periodo="12-18">0</prob_precipitacion>
 			<prob_precipitacion periodo="18-24">0</prob_precipitacion>
 			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
@@ -29,10 +29,10 @@
 			<cota_nieve_prov periodo="18-24"></cota_nieve_prov>
 			<estado_cielo periodo="00-24" descripcion=""></estado_cielo>
 			<estado_cielo periodo="00-12" descripcion=""></estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="00-06" descripcion=""></estado_cielo>
-			<estado_cielo periodo="06-12" descripcion="Intervalos nubosos">13</estado_cielo>
-			<estado_cielo periodo="12-18" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="06-12" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="12-18" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="18-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
 				<direccion></direccion>
@@ -43,24 +43,24 @@
 				<velocidad></velocidad>
 			</viento>
 			<viento periodo="12-24">
-				<direccion>NO</direccion>
-				<velocidad>20</velocidad>
+				<direccion>S</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-06">
-				<direccion>S</direccion>
+				<direccion>N</direccion>
 				<velocidad>10</velocidad>
 			</viento>
 			<viento periodo="06-12">
-				<direccion>N</direccion>
-				<velocidad>5</velocidad>
+				<direccion>NE</direccion>
+				<velocidad>10</velocidad>
 			</viento>
 			<viento periodo="12-18">
-				<direccion>NO</direccion>
-				<velocidad>20</velocidad>
+				<direccion>S</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="18-24">
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
+				<direccion>SE</direccion>
+				<velocidad>10</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
 			<racha_max periodo="00-12"></racha_max>
@@ -70,32 +70,32 @@
 			<racha_max periodo="12-18"></racha_max>
 			<racha_max periodo="18-24"></racha_max>
 			<temperatura>
-				<maxima>34</maxima>
-				<minima>20</minima>
-				<dato hora="06">23</dato>
-				<dato hora="12">29</dato>
-				<dato hora="18">32</dato>
-				<dato hora="24">24</dato>
+				<maxima>41</maxima>
+				<minima>22</minima>
+				<dato hora="06">24</dato>
+				<dato hora="12">39</dato>
+				<dato hora="18">38</dato>
+				<dato hora="24">28</dato>
 			</temperatura>
 			<sens_termica>
-				<maxima>33</maxima>
-				<minima>21</minima>
-				<dato hora="06">23</dato>
-				<dato hora="12">29</dato>
-				<dato hora="18">32</dato>
-				<dato hora="24">24</dato>
+				<maxima>41</maxima>
+				<minima>22</minima>
+				<dato hora="06">24</dato>
+				<dato hora="12">39</dato>
+				<dato hora="18">38</dato>
+				<dato hora="24">28</dato>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>90</maxima>
-				<minima>25</minima>
-				<dato hora="06">75</dato>
-				<dato hora="12">45</dato>
-				<dato hora="18">25</dato>
-				<dato hora="24">45</dato>
+				<maxima>40</maxima>
+				<minima>15</minima>
+				<dato hora="06">40</dato>
+				<dato hora="12">15</dato>
+				<dato hora="18">15</dato>
+				<dato hora="24">25</dato>
 			</humedad_relativa>
 			<uv_max>10</uv_max>
 		</dia>
-		<dia fecha="2020-07-23">
+		<dia fecha="2020-07-27">
 			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
 			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
 			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
@@ -118,209 +118,209 @@
 			<estado_cielo periodo="12-18" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="18-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
-				<direccion>NO</direccion>
-				<velocidad>15</velocidad>
+				<direccion>S</direccion>
+				<velocidad>25</velocidad>
 			</viento>
 			<viento periodo="00-12">
-				<direccion>NO</direccion>
+				<direccion>S</direccion>
+				<velocidad>25</velocidad>
+			</viento>
+			<viento periodo="12-24">
+				<direccion>S</direccion>
+				<velocidad>25</velocidad>
+			</viento>
+			<viento periodo="00-06">
+				<direccion>S</direccion>
 				<velocidad>15</velocidad>
+			</viento>
+			<viento periodo="06-12">
+				<direccion>S</direccion>
+				<velocidad>25</velocidad>
+			</viento>
+			<viento periodo="12-18">
+				<direccion>SO</direccion>
+				<velocidad>25</velocidad>
+			</viento>
+			<viento periodo="18-24">
+				<direccion>SO</direccion>
+				<velocidad>10</velocidad>
+			</viento>
+			<racha_max periodo="00-24">45</racha_max>
+			<racha_max periodo="00-12">45</racha_max>
+			<racha_max periodo="12-24">45</racha_max>
+			<racha_max periodo="00-06"></racha_max>
+			<racha_max periodo="06-12">45</racha_max>
+			<racha_max periodo="12-18">40</racha_max>
+			<racha_max periodo="18-24"></racha_max>
+			<temperatura>
+				<maxima>36</maxima>
+				<minima>24</minima>
+				<dato hora="06">25</dato>
+				<dato hora="12">35</dato>
+				<dato hora="18">32</dato>
+				<dato hora="24">25</dato>
+			</temperatura>
+			<sens_termica>
+				<maxima>36</maxima>
+				<minima>24</minima>
+				<dato hora="06">25</dato>
+				<dato hora="12">35</dato>
+				<dato hora="18">32</dato>
+				<dato hora="24">25</dato>
+			</sens_termica>
+			<humedad_relativa>
+				<maxima>55</maxima>
+				<minima>20</minima>
+				<dato hora="06">40</dato>
+				<dato hora="12">25</dato>
+				<dato hora="18">25</dato>
+				<dato hora="24">55</dato>
+			</humedad_relativa>
+			<uv_max>10</uv_max>
+		</dia>
+		<dia fecha="2020-07-28">
+			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
+			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
+			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
+			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
+			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
+			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
+			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
+			<viento periodo="00-24">
+				<direccion>O</direccion>
+				<velocidad>10</velocidad>
+			</viento>
+			<viento periodo="00-12">
+				<direccion>O</direccion>
+				<velocidad>10</velocidad>
 			</viento>
 			<viento periodo="12-24">
 				<direccion>NO</direccion>
 				<velocidad>15</velocidad>
 			</viento>
-			<viento periodo="00-06">
-				<direccion>NO</direccion>
+			<racha_max periodo="00-24"></racha_max>
+			<racha_max periodo="00-12"></racha_max>
+			<racha_max periodo="12-24"></racha_max>
+			<temperatura>
+				<maxima>36</maxima>
+				<minima>21</minima>
+			</temperatura>
+			<sens_termica>
+				<maxima>37</maxima>
+				<minima>21</minima>
+			</sens_termica>
+			<humedad_relativa>
+				<maxima>60</maxima>
+				<minima>15</minima>
+			</humedad_relativa>
+			<uv_max>10</uv_max>
+		</dia>
+		<dia fecha="2020-07-29">
+			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
+			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
+			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
+			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
+			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
+			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
+			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
+			<viento periodo="00-24">
+				<direccion>S</direccion>
 				<velocidad>10</velocidad>
 			</viento>
-			<viento periodo="06-12">
-				<direccion>NO</direccion>
-				<velocidad>15</velocidad>
+			<viento periodo="00-12">
+				<direccion>S</direccion>
+				<velocidad>10</velocidad>
 			</viento>
-			<viento periodo="12-18">
-				<direccion>NO</direccion>
-				<velocidad>15</velocidad>
-			</viento>
-			<viento periodo="18-24">
-				<direccion>NO</direccion>
-				<velocidad>20</velocidad>
+			<viento periodo="12-24">
+				<direccion>S</direccion>
+				<velocidad>10</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
 			<racha_max periodo="00-12"></racha_max>
 			<racha_max periodo="12-24"></racha_max>
-			<racha_max periodo="00-06"></racha_max>
-			<racha_max periodo="06-12"></racha_max>
-			<racha_max periodo="12-18"></racha_max>
-			<racha_max periodo="18-24"></racha_max>
 			<temperatura>
-				<maxima>37</maxima>
-				<minima>22</minima>
-				<dato hora="06">24</dato>
-				<dato hora="12">35</dato>
-				<dato hora="18">34</dato>
-				<dato hora="24">26</dato>
+				<maxima>38</maxima>
+				<minima>21</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>37</maxima>
-				<minima>22</minima>
-				<dato hora="06">24</dato>
-				<dato hora="12">35</dato>
-				<dato hora="18">34</dato>
-				<dato hora="24">26</dato>
+				<maxima>38</maxima>
+				<minima>21</minima>
+			</sens_termica>
+			<humedad_relativa>
+				<maxima>65</maxima>
+				<minima>15</minima>
+			</humedad_relativa>
+			<uv_max>10</uv_max>
+		</dia>
+		<dia fecha="2020-07-30">
+			<prob_precipitacion>0</prob_precipitacion>
+			<cota_nieve_prov></cota_nieve_prov>
+			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
+			<viento>
+				<direccion>SE</direccion>
+				<velocidad>20</velocidad>
+			</viento>
+			<racha_max></racha_max>
+			<temperatura>
+				<maxima>39</maxima>
+				<minima>24</minima>
+			</temperatura>
+			<sens_termica>
+				<maxima>39</maxima>
+				<minima>24</minima>
 			</sens_termica>
 			<humedad_relativa>
 				<maxima>60</maxima>
 				<minima>20</minima>
-				<dato hora="06">55</dato>
-				<dato hora="12">25</dato>
-				<dato hora="18">20</dato>
-				<dato hora="24">45</dato>
 			</humedad_relativa>
 			<uv_max>10</uv_max>
 		</dia>
-		<dia fecha="2020-07-24">
-			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
-			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
-			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
-			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
-			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
-			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
-			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
-			<viento periodo="00-24">
-				<direccion>O</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<viento periodo="00-12">
-				<direccion>NO</direccion>
-				<velocidad>20</velocidad>
-			</viento>
-			<viento periodo="12-24">
-				<direccion>NO</direccion>
-				<velocidad>15</velocidad>
-			</viento>
-			<racha_max periodo="00-24"></racha_max>
-			<racha_max periodo="00-12"></racha_max>
-			<racha_max periodo="12-24"></racha_max>
-			<temperatura>
-				<maxima>37</maxima>
-				<minima>22</minima>
-			</temperatura>
-			<sens_termica>
-				<maxima>37</maxima>
-				<minima>22</minima>
-			</sens_termica>
-			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>10</minima>
-			</humedad_relativa>
-			<uv_max>10</uv_max>
-		</dia>
-		<dia fecha="2020-07-25">
-			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
-			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
-			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
-			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
-			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
-			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
-			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
-			<viento periodo="00-24">
-				<direccion>SO</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<viento periodo="00-12">
-				<direccion>NO</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<viento periodo="12-24">
-				<direccion>O</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<racha_max periodo="00-24"></racha_max>
-			<racha_max periodo="00-12"></racha_max>
-			<racha_max periodo="12-24"></racha_max>
-			<temperatura>
-				<maxima>38</maxima>
-				<minima>21</minima>
-			</temperatura>
-			<sens_termica>
-				<maxima>38</maxima>
-				<minima>21</minima>
-			</sens_termica>
-			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>15</minima>
-			</humedad_relativa>
-			<uv_max>10</uv_max>
-		</dia>
-		<dia fecha="2020-07-26">
+		<dia fecha="2020-07-31">
 			<prob_precipitacion>0</prob_precipitacion>
 			<cota_nieve_prov></cota_nieve_prov>
 			<estado_cielo descripcion="Despejado">11</estado_cielo>
 			<viento>
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
-			</viento>
-			<racha_max></racha_max>
-			<temperatura>
-				<maxima>40</maxima>
-				<minima>22</minima>
-			</temperatura>
-			<sens_termica>
-				<maxima>40</maxima>
-				<minima>22</minima>
-			</sens_termica>
-			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>15</minima>
-			</humedad_relativa>
-			<uv_max>10</uv_max>
-		</dia>
-		<dia fecha="2020-07-27">
-			<prob_precipitacion>0</prob_precipitacion>
-			<cota_nieve_prov></cota_nieve_prov>
-			<estado_cielo descripcion="Despejado">11</estado_cielo>
-			<viento>
-				<direccion>SO</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<racha_max></racha_max>
-			<temperatura>
-				<maxima>39</maxima>
-				<minima>23</minima>
-			</temperatura>
-			<sens_termica>
-				<maxima>39</maxima>
-				<minima>23</minima>
-			</sens_termica>
-			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>15</minima>
-			</humedad_relativa>
-		</dia>
-		<dia fecha="2020-07-28">
-			<prob_precipitacion>0</prob_precipitacion>
-			<cota_nieve_prov></cota_nieve_prov>
-			<estado_cielo descripcion="Despejado">11</estado_cielo>
-			<viento>
-				<direccion>O</direccion>
+				<direccion>S</direccion>
 				<velocidad>5</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
 				<maxima>38</maxima>
-				<minima>22</minima>
+				<minima>21</minima>
 			</temperatura>
 			<sens_termica>
 				<maxima>38</maxima>
+				<minima>21</minima>
+			</sens_termica>
+			<humedad_relativa>
+				<maxima>75</maxima>
+				<minima>15</minima>
+			</humedad_relativa>
+		</dia>
+		<dia fecha="2020-08-01">
+			<prob_precipitacion>0</prob_precipitacion>
+			<cota_nieve_prov></cota_nieve_prov>
+			<estado_cielo descripcion="Despejado">11</estado_cielo>
+			<viento>
+				<direccion>O</direccion>
+				<velocidad>10</velocidad>
+			</viento>
+			<racha_max></racha_max>
+			<temperatura>
+				<maxima>39</maxima>
+				<minima>22</minima>
+			</temperatura>
+			<sens_termica>
+				<maxima>39</maxima>
 				<minima>22</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>55</maxima>
-				<minima>20</minima>
+				<maxima>50</maxima>
+				<minima>10</minima>
 			</humedad_relativa>
 		</dia>
 	</prediccion>

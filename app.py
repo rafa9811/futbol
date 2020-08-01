@@ -48,7 +48,7 @@ class App():
 
         atras = Button(self.wprevia, text="Atrás", command=self.principal)
         atras.grid(column=0, row=6)
-        elaborar = Button(self.wprevia, text="Elaborar", command=createpdf)
+        elaborar = Button(self.wprevia, text="Elaborar", command= lambda: createpdf(combolocal.get(), combovisitante.get()))
         elaborar.grid(column=0, row=5)
         self.wprevia.mainloop()
 
@@ -58,5 +58,6 @@ class App():
         wintroduce.title('RefApp')
         wintroduce.geometry('350x200')
         wintroduce.mainloop()
+
 
 app = App()

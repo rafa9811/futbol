@@ -69,7 +69,7 @@ def parse_xml(month, day):
         if child.attrib['fecha'] == attr:
             ddate = child
             break
-        else: date = False
+        else: ddate = False
 
     prob_precipitacion = ddate.find('prob_precipitacion').text
     estado_cielo = ddate.find('estado_cielo').text

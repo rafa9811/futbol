@@ -11,5 +11,17 @@ class Partido:
         return msg.format(self.jornada, self.local, self.reslocal, self.resvisitante, self.visitante)
 
     def toString(self):
-        msg = "{0} {1} {2} {3} {4} |"
-        return msg.format(self.jornada, self.local, self.reslocal, self.resvisitante, self.visitante)
+        msg = "{0} {1} {2} {3} |"
+        return msg.format(self.local, self.reslocal, self.resvisitante, self.visitante)
+
+
+class Jornada:
+    def __init__(self, num, fecha, partidos):
+        self.partidos = partidos
+        self.num = num
+        self.fecha = fecha
+
+    def __str__(self):
+        msg = "Jornada " + self.num + ": "
+        for p in self.partidos:
+            msg += p.toString()

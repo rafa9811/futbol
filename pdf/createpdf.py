@@ -250,7 +250,7 @@ def createpdf(equipo1, equipo2):
     c.drawText(eqa)
 
     #tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
-    tiempo = get_forecast('Llerena', '08', '03')
+    tiempo = get_forecast('Llerena', '08', '12')
     path = pathIcon(tiempo['estado_cielo'])
     I = Image(path)
     I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth

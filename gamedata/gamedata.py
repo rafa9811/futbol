@@ -5,6 +5,7 @@ import sys
 sys.path.append("..")
 from model.model import *
 
+
 def grupo_request(grupo, jornada):
     if grupo == '1':
         url = 'https://futbolme.com/resultados-directo/torneo/preferente-grupo-1/56/'
@@ -15,6 +16,7 @@ def grupo_request(grupo, jornada):
         req = requests.get(url + jornada)
         soup = BeautifulSoup(req.text, "lxml")
     return soup
+
 
 def get_game_data(grupo):
     if grupo == '1' or grupo == '2':
@@ -40,10 +42,10 @@ def get_game_data(grupo):
             for div in matchdivs:
                 match = div.meta['content']
                 teams = match.split(' - ')
-                local = teams[0]
-                visiting = teams[1]
-                reslocal = div.find("p", class_="reboxL").text
-                resvis = div.find("p", class_="reboxR").text
+                local = teams[0].strip()
+                visiting = teams[1].strip()
+                reslocal = div.find("p", class_="reboxL").text.strip()
+                resvis = div.find("p", class_="reboxR").text.strip()
                 p = Partido(local, visiting, reslocal, resvis, numjornada)
                 lmatchs.append(p)
 
@@ -58,10 +60,12 @@ def get_game_data(grupo):
         print('El número de grupo no es el correcto')
         return
 
+
 def gd_toFile(grupo):
     file = open('gamedata.txt', 'w')
     file.write(get_game_data(grupo).toString())
     file.close()
+
 
 def fileToModel():
     with open('gamedata.txt', 'r') as file:
@@ -84,9 +88,62 @@ def fileToModel():
         ljornadas.append(jornada)
 
     temporada = Temporada(numt, ljornadas)
-
     return temporada
 
 
-gd_toFile('1')
-fileToModel()
+def process_goals(temporada, team):
+    against_goals = 0
+    favor_goals = 0
+    local_against_goals = 0
+    local_favor_goals = 0
+    vis_against_goals = 0
+    vis_favor_goals = 0
+    flag = 0
+
+    for j in temporada.get_jornadas():
+        for p in j.get_partidos():
+            if p.get_local() == team or p.get_visiting() == team:
+                flag = 1
+                if p.get_local() == team:
+                    local_favor_goals += int(p.get_reslocal())
+                    local_against_goals += int(p.get_resvisiting())
+                if p.get_visiting() == team:
+                    vis_favor_goals += int(p.get_resvisiting())
+                    vis_against_goals += int(p.get_reslocal())
+
+    if flag == 0:
+        print('El equipo introducido no se encuentra. Error')
+        return -1
+
+    against_goals = local_against_goals + vis_against_goals
+    favor_goals = local_favor_goals + vis_favor_goals
+    return against_goals, favor_goals, local_against_goals, local_favor_goals, vis_against_goals, vis_favor_goals
+
+
+def process_matchs(temporada, team):
+    lmatchs = []
+    ind = 5
+    jornadas = temporada.get_jornadas()
+    if len(jornadas) < 5:
+        ind = len(jornadas)
+
+    for j in jornadas[-5:]:
+        for p in j.get_partidos():
+
+            if p.get_local() == team:
+                if int(p.get_reslocal()) > int(p.get_resvisiting()):
+                    lmatchs.append('G')
+                elif int(p.get_reslocal()) < int(p.get_resvisiting()):
+                    lmatchs.append('P')
+                else:
+                    lmatchs.append('E')
+
+            if p.get_visiting() == team:
+                if int(p.get_reslocal()) < int(p.get_resvisiting()):
+                    lmatchs.append('G')
+                elif int(p.get_reslocal()) > int(p.get_resvisiting()):
+                    lmatchs.append('P')
+                else:
+                    lmatchs.append('E')
+
+    return lmatchs

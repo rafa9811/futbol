@@ -14,6 +14,17 @@ class Partido:
         msg = "{0}#{1}#{2}#{3}|"
         return msg.format(self.local, self.reslocal, self.resvisitante, self.visitante)
 
+    def get_local(self):
+        return self.local
+
+    def get_visiting(self):
+        return self.visitante
+
+    def get_reslocal(self):
+        return self.reslocal
+
+    def get_resvisiting(self):
+        return self.resvisitante
 
 class Jornada:
     def __init__(self, num, fecha, partidos):
@@ -35,6 +46,9 @@ class Jornada:
             msg += '\n'
         return msg
 
+    def get_partidos(self):
+        return self.partidos
+
 
 class Temporada:
     def __init__(self, num, jornadas):
@@ -53,3 +67,6 @@ class Temporada:
         for j in self.jornadas:
             msg += j.toString()
         return msg
+
+    def get_jornadas(self):
+        return self.jornadas

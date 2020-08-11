@@ -1,9 +1,27 @@
-import requests
+from reportlab.lib import colors
 from bs4 import BeautifulSoup
+import requests
 import sys
+import os
 
 sys.path.append("..")
 from model.model import *
+
+
+def get_path():
+    path_list = os.getcwd().split('/')
+    generic_path = ""
+
+    for elem in path_list[1:]:
+        if not elem == 'futbol':
+            generic_path += '/'
+            generic_path += elem
+        else:
+            generic_path += '/'
+            generic_path += elem
+            break
+    path = generic_path + '/gamedata/gamedata.txt'
+    return path
 
 
 def grupo_request(grupo, jornada):
@@ -62,13 +80,13 @@ def get_game_data(grupo):
 
 
 def gd_toFile(grupo):
-    file = open('gamedata.txt', 'w')
+    file = open(get_path(), 'w')
     file.write(get_game_data(grupo).toString())
     file.close()
 
 
 def fileToModel():
-    with open('gamedata.txt', 'r') as file:
+    with open(get_path(), 'r') as file:
         lineas = file.readlines()
 
     numt = lineas[0]
@@ -117,7 +135,7 @@ def process_goals(temporada, team):
 
     against_goals = local_against_goals + vis_against_goals
     favor_goals = local_favor_goals + vis_favor_goals
-    return against_goals, favor_goals, local_against_goals, local_favor_goals, vis_against_goals, vis_favor_goals
+    return str(against_goals), str(favor_goals), str(local_against_goals), str(local_favor_goals), str(vis_against_goals), str(vis_favor_goals)
 
 
 def process_matchs(temporada, team):
@@ -132,18 +150,18 @@ def process_matchs(temporada, team):
 
             if p.get_local() == team:
                 if int(p.get_reslocal()) > int(p.get_resvisiting()):
-                    lmatchs.append('G')
+                    lmatchs.append(['G', colors.green])
                 elif int(p.get_reslocal()) < int(p.get_resvisiting()):
-                    lmatchs.append('P')
+                    lmatchs.append(['P', colors.red])
                 else:
-                    lmatchs.append('E')
+                    lmatchs.append(['E', colors.orange])
 
             if p.get_visiting() == team:
                 if int(p.get_reslocal()) < int(p.get_resvisiting()):
-                    lmatchs.append('G')
+                    lmatchs.append(['G', colors.green])
                 elif int(p.get_reslocal()) > int(p.get_resvisiting()):
-                    lmatchs.append('P')
+                    lmatchs.append(['P', colors.red])
                 else:
-                    lmatchs.append('E')
+                    lmatchs.append(['E', colors.orange])
 
     return lmatchs

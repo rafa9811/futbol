@@ -15,6 +15,7 @@ from reportlab.platypus import Table, TableStyle, Image, Flowable
 sys.path.append("..")
 from forecast.forecast import *
 from excel.extract import *
+from gamedata.gamedata import *
 
 ########################### Auxiliar functions #################################
 w, h = A4 # 595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
@@ -104,18 +105,18 @@ def transform_color(color):
 
 def createpdf(equipo1, equipo2):
     print("Confeccionando pdf...")
-    w, h = A4 # 595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
-    global newh # Auxiliar height
-    global newh2 # Auxiliar height 2
+    w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
+    global newh #Auxiliar height
+    global newh2 #Auxiliar height 2
+    temporada = fileToModel() #Current season
 
     c = canvas.Canvas("previa.pdf", pagesize=A4)
     c.setFont("Helvetica", 12)
 
-    # Título de documento.
+    #Título de documento.
     c.drawString(235, h - 50, "PREVIA DE PARTIDO")
 
     #Tabla de equipos
-
     data = [[equipo1, equipo2]]
     t = Table(data, colWidths=[255, 255], rowHeights=[70])
     t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
@@ -178,17 +179,22 @@ def createpdf(equipo1, equipo2):
     c.drawString(199, h-280, dp + " - " + comite)
 
     #Tablas de estadísitcas numéricas
+    lm1 = process_matchs(temporada, equipo1)
+    lm2 = process_matchs(temporada, equipo2)
+    against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporada, equipo1)
+    against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporada, equipo2)
+
     data1 = [
     ['', 'PG', 'PE', 'PP', 'GF', 'GC'],
-    ['Tot', '20', '21', '22', '23', '24'],
-    ['Loc','20', '21', '22', '23', '24'],
-    ['Últ', '31', '32', '33', '34', '34']
+    ['Tot', '20', '21', '22', favor1, against1],
+    ['Loc','20', '21', '22', local_favor1, local_against1],
+    ['Últ', lm1[0][0], lm1[1][0], lm1[2][0], lm1[3][0], lm1[4][0]]
     ]
     data2 = [
     ['PG', 'PE', 'PP', 'GF', 'GC', ''],
-    ['20', '21', '22', '23', '24', 'Tot'],
-    ['20', '21', '22', '23', '24', 'Vis'],
-    ['31', '32', '33', '34', '34', 'Últ']
+    ['20', '21', '22', favor2, against2, 'Tot'],
+    ['20', '21', '22', vis_favor2, vis_against2, 'Vis'],
+    [lm2[0][0], lm2[1][0], lm2[2][0], lm2[3][0], lm2[4][0], 'Últ']
     ]
     t1 = Table(data1)
     t2 = Table(data2)
@@ -196,6 +202,11 @@ def createpdf(equipo1, equipo2):
     t1.setStyle(TableStyle([('BACKGROUND',(1,0),(1,0),colors.green),
     ('BACKGROUND',(2,0),(2,0),colors.orange),
     ('BACKGROUND',(3,0),(3,0),colors.red),
+    ('BACKGROUND',(1,3),(1,3),lm1[0][1]),
+    ('BACKGROUND',(2,3),(2,3),lm1[1][1]),
+    ('BACKGROUND',(3,3),(3,3),lm1[2][1]),
+    ('BACKGROUND',(4,3),(4,3),lm1[3][1]),
+    ('BACKGROUND',(5,3),(5,3),lm1[4][1]),
     ('TEXTCOLOR',(1,1),(1,2),colors.green),
     ('TEXTCOLOR',(2,1),(2,2),colors.orange),
     ('TEXTCOLOR',(3,1),(3,2),colors.red),
@@ -206,6 +217,11 @@ def createpdf(equipo1, equipo2):
     t2.setStyle(TableStyle([('BACKGROUND',(0,0),(0,0),colors.green),
     ('BACKGROUND',(1,0),(1,0),colors.orange),
     ('BACKGROUND',(2,0),(2,0),colors.red),
+    ('BACKGROUND',(0,3),(0,3),lm2[0][1]),
+    ('BACKGROUND',(1,3),(1,3),lm2[1][1]),
+    ('BACKGROUND',(2,3),(2,3),lm2[2][1]),
+    ('BACKGROUND',(3,3),(3,3),lm2[3][1]),
+    ('BACKGROUND',(4,3),(4,3),lm2[4][1]),
     ('TEXTCOLOR',(0,1),(0,2),colors.green),
     ('TEXTCOLOR',(1,1),(1,2),colors.orange),
     ('TEXTCOLOR',(2,1),(2,2),colors.red),
@@ -250,7 +266,7 @@ def createpdf(equipo1, equipo2):
     c.drawText(eqa)
 
     #tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
-    tiempo = get_forecast('Llerena', '08', '12')
+    tiempo = get_forecast('Llerena', '08', '15')
     path = pathIcon(tiempo['estado_cielo'])
     I = Image(path)
     I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
@@ -294,7 +310,7 @@ def createpdf(equipo1, equipo2):
     teq1.wrapOn(c, w, h)
     teq1.drawOn(c, 45, h-470)
 
-    # #Equipamiento2
+    #Equipamiento2
     plfirstkit = get_player_first_kit(equipo2)
     shirt1 = transform_color(plfirstkit['shirt1'])
     shirt2 = transform_color(plfirstkit['shirt2'])

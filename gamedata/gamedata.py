@@ -147,4 +147,3 @@ def process_matchs(temporada, team):
                     lmatchs.append('E')
 
     return lmatchs
-    

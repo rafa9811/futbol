@@ -57,8 +57,9 @@ def team_row(team):
 def get_group(team):
     book, sheet = load_w()
     row = team_row(team)
-
-    return str(sheet.cell(row, 1).value)
+    group = str(sheet.cell(row, 1).value)
+    group = group[0:1]
+    return group
 
 
 def get_coachs(team):
@@ -182,3 +183,10 @@ def get_bibs(team):
     xfx = sheet.cell_xf_index(row, 30)
     bibs = book.colour_map[book.xf_list[xfx].background.pattern_colour_index]
     return bibs
+
+
+def get_city(team):
+    book, sheet = load_w()
+    row = team_row(team)
+    city = sheet.cell(row, 32).value
+    return city

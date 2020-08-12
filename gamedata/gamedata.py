@@ -8,7 +8,7 @@ sys.path.append("..")
 from model.model import *
 
 
-def get_path():
+def get_path(grupo):
     path_list = os.getcwd().split('/')
     generic_path = ""
 
@@ -20,7 +20,7 @@ def get_path():
             generic_path += '/'
             generic_path += elem
             break
-    path = generic_path + '/gamedata/gamedata.txt'
+    path = generic_path + '/gamedata/gamedata' + grupo + '.txt'
     return path
 
 
@@ -80,13 +80,13 @@ def get_game_data(grupo):
 
 
 def gd_toFile(grupo):
-    file = open(get_path(), 'w')
+    file = open(get_path(grupo), 'w')
     file.write(get_game_data(grupo).toString())
     file.close()
 
 
-def fileToModel():
-    with open(get_path(), 'r') as file:
+def fileToModel(grupo):
+    with open(get_path(grupo), 'r') as file:
         lineas = file.readlines()
 
     numt = lineas[0]

@@ -108,7 +108,10 @@ def createpdf(equipo1, equipo2):
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
     global newh2 #Auxiliar height 2
-    temporada = fileToModel() #Current season
+    grupo1 = get_group(equipo1)
+    grupo2 = get_group(equipo2)
+    temporadalocal = fileToModel(grupo1) #Current season
+    temporadavisitante = fileToModel(grupo2)
 
     c = canvas.Canvas("previa.pdf", pagesize=A4)
     c.setFont("Helvetica", 12)
@@ -179,10 +182,10 @@ def createpdf(equipo1, equipo2):
     c.drawString(199, h-280, dp + " - " + comite)
 
     #Tablas de estadísitcas numéricas
-    lm1 = process_matchs(temporada, equipo1)
-    lm2 = process_matchs(temporada, equipo2)
-    against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporada, equipo1)
-    against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporada, equipo2)
+    lm1 = process_matchs(temporadalocal, equipo1)
+    lm2 = process_matchs(temporadavisitante, equipo2)
+    against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporadalocal, equipo1)
+    against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporadavisitante, equipo2)
 
     data1 = [
     ['', 'PG', 'PE', 'PP', 'GF', 'GC'],

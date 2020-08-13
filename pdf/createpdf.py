@@ -110,8 +110,14 @@ def createpdf(equipo1, equipo2):
     global newh2 #Auxiliar height 2
     grupo1 = get_group(equipo1)
     grupo2 = get_group(equipo2)
+    if grupo1 != grupo2:
+        grupo = '?'
+    else:
+        grupo = grupo1
+
     temporadalocal = fileToModel(grupo1) #Current season
     temporadavisitante = fileToModel(grupo2)
+    city = get_city(equipo1)
 
     c = canvas.Canvas("previa.pdf", pagesize=A4)
     c.setFont("Helvetica", 12)
@@ -140,7 +146,6 @@ def createpdf(equipo1, equipo2):
     c.grid(xl1, yl1)
     c.drawString(50, h-80, "Fecha")
     c.drawString(178, h-80, "CATEGORÍA")
-    grupo = "1"
     c.drawString(155, h-93, "PREFERENTE, GR. " + grupo)
     hora = "12:00"
     c.drawString(300, h-87, hora)
@@ -269,12 +274,12 @@ def createpdf(equipo1, equipo2):
     c.drawText(eqa)
 
     #tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
-    tiempo = get_forecast('Llerena', '08', '15')
+    tiempo = get_forecast(city, '08', '15')
     path = pathIcon(tiempo['estado_cielo'])
     I = Image(path)
     I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
     I.drawWidth = 0.6*inch
-    dfor = [['FUENLABRADA'], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
+    dfor = [[city], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
             ['Viento: ' + tiempo['vientovel'] + ' km/h ' + tiempo['vientodir']]]
     tfor = Table(dfor)
     tfor.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER')]))

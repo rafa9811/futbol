@@ -1,5 +1,6 @@
 from tkinter.ttk import *
 from tkinter import *
+from tkcalendar import Calendar, DateEntry
 import sys
 
 sys.path.append("..")
@@ -55,7 +56,7 @@ class App():
         self.root.destroy()
         self.wprevia = Tk()
         self.wprevia.title('RefApp')
-        self.wprevia.geometry('350x200')
+        self.wprevia.geometry('620x250')
         lbl = Label(self.wprevia, text='Elaborar previa de partido', padx=50, pady=10, font=("Helvetica Bold", 20))
         lbl.grid(column=0, row=0)
 
@@ -71,10 +72,17 @@ class App():
         lbvis.grid(column=0, row=3)
         combovisitante.grid(column=0, row=4)
 
+        s = Style(self.wprevia)
+        s.theme_use('clam')
+        lcal = Label(self.wprevia, text='Introduzca la fecha del partido')
+        calendar = Button(self.wprevia, text='Abrir calendario', command=self.calendar)
+        lcal.grid(column=1, row=1)
+        calendar.grid(column=1, row=2)
+
         atras = Button(self.wprevia, text="Atrás", command=self.principal)
-        atras.grid(column=0, row=6)
+        atras.grid(column=1, row=6)
         elaborar = Button(self.wprevia, text="Elaborar", command= lambda: createpdf(combolocal.get(), combovisitante.get()))
-        elaborar.grid(column=0, row=5)
+        elaborar.grid(column=0, row=6)
         self.wprevia.mainloop()
 
     def btn2(self):
@@ -89,6 +97,20 @@ class App():
         atras = Button(self.wget, text="Atrás", command=self.principal2)
         atras.grid(column=0, row=3)
         self.wget.mainloop()
+
+    def calendar(self):
+        def proc_date():
+            self.matchdate = cal.selection_get()
+            cal.destroy()
+            top.destroy()
+            print(self.matchdate)
+
+        top = Toplevel(self.wprevia)
+        cal = Calendar(top,
+                       font="Arial 14", selectmode='day',
+                       cursor="hand1", year=2020, month=8, day=13)
+        cal.pack(fill="both", expand=True)
+        Button(top, text="Seleccionar", command=proc_date).pack()
 
 
 app = App()

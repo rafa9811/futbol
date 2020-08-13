@@ -1,5 +1,7 @@
+from datetime import datetime, timedelta
 from tkinter.ttk import *
 from tkinter import *
+from tkinter import messagebox
 from tkcalendar import Calendar, DateEntry
 import sys
 
@@ -10,6 +12,7 @@ from gamedata.gamedata import *
 
 class App():
     def __init__(self):
+        self.matchdate = None
         self.inicial()
 
     def inicial(self):
@@ -53,6 +56,20 @@ class App():
         self.group.mainloop()
 
     def btn1(self):
+        def check_create():
+            if self.matchdate == None or combolocal.get() == '' or combovisitante.get() == '':
+                messagebox.showwarning('Error', 'Antes de elaborar la previa debe seleccionar una fecha, equipo local y equipo visitante.')
+            else:
+                actual = datetime.now()
+                nweek = actual + timedelta(days=7)
+                nweek = nweek.date()
+                if nweek <= self.matchdate:
+                    r = messagebox.askyesno('Atención', 'Si selecciona una fecha con más de siete días de diferencia: \n\n(1) Puede que los datos no estén actualizados al no haberse completado alguna jornada.\n(2) La previsión meteorológica no estará disponible.\n\n¿Desea continuar?')
+                    if r == True:
+                        createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate))
+                else:
+                    createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate))
+
         self.root.destroy()
         self.wprevia = Tk()
         self.wprevia.title('RefApp')
@@ -81,7 +98,7 @@ class App():
 
         atras = Button(self.wprevia, text="Atrás", command=self.principal)
         atras.grid(column=1, row=6)
-        elaborar = Button(self.wprevia, text="Elaborar", command= lambda: createpdf(combolocal.get(), combovisitante.get()))
+        elaborar = Button(self.wprevia, text="Elaborar", command=check_create)
         elaborar.grid(column=0, row=6)
         self.wprevia.mainloop()
 
@@ -103,7 +120,6 @@ class App():
             self.matchdate = cal.selection_get()
             cal.destroy()
             top.destroy()
-            print(self.matchdate)
 
         top = Toplevel(self.wprevia)
         cal = Calendar(top,

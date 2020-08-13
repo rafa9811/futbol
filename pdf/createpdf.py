@@ -103,7 +103,7 @@ def transform_color(color):
 
 ################################################################################
 
-def createpdf(equipo1, equipo2):
+def createpdf(equipo1, equipo2, date):
     print("Confeccionando pdf...")
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
@@ -126,7 +126,7 @@ def createpdf(equipo1, equipo2):
     c.drawString(235, h - 50, "PREVIA DE PARTIDO")
 
     #Tabla de equipos
-    data = [[equipo1, equipo2]]
+    data = [[equipo1.upper(), equipo2.upper()]]
     t = Table(data, colWidths=[255, 255], rowHeights=[70])
     t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
     ('INNERGRID', (0,0), (-1,-1), 1, colors.black),
@@ -274,12 +274,14 @@ def createpdf(equipo1, equipo2):
     c.drawText(eqa)
 
     #tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
-    tiempo = get_forecast(city, '08', '15')
+    #date: 2020-07-21
+    date = date.split('-')
+    tiempo = get_forecast(city, date[0], date[1], date[2])
     path = pathIcon(tiempo['estado_cielo'])
     I = Image(path)
     I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
     I.drawWidth = 0.6*inch
-    dfor = [[city], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
+    dfor = [[city.upper()], [I], ['Lluvia: ' + tiempo['prob_precipitacion'] + '%'],
             ['Viento: ' + tiempo['vientovel'] + ' km/h ' + tiempo['vientodir']]]
     tfor = Table(dfor)
     tfor.setStyle(TableStyle([('ALIGN',(0,0),(-1,-1),'CENTER')]))

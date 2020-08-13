@@ -57,12 +57,11 @@ def download_xml(id):
         file.write(response.content)
 
 
-def parse_xml(month, day):
+def parse_xml(year, month, day):
     tree = et.parse(generic_path + '/forecast/data.xml')
     root = tree.getroot()
     prediction = root.find('prediccion')
 
-    year = str(datetime.now().year)
     attr = year + '-' + str(month) + '-' + str(day)
 
     for child in prediction:
@@ -83,7 +82,7 @@ def parse_xml(month, day):
     return {'prob_precipitacion': prob_precipitacion, 'estado_cielo': estado_cielo, 'vientodir': vientodir, 'vientovel': vientovel, 'tmax': tmax, 'tmin': tmin}
 
 
-def get_forecast(town, month, day):
+def get_forecast(town, year, month, day):
     id = get_id(town)
     download_xml(id)
-    return parse_xml(month, day)
+    return parse_xml(year, month, day)

@@ -60,25 +60,26 @@ class App():
             if self.matchdate == None or combolocal.get() == '' or combovisitante.get() == '':
                 messagebox.showwarning('Error', 'Antes de elaborar la previa debe seleccionar una fecha, equipo local y equipo visitante.')
             else:
+                refteam = [tarb1.get(), tarb2.get(), tarb3.get(), tdel.get()]
                 nweek = (datetime.now() + timedelta(days=7)).date()
                 today = (datetime.now()).date()
                 if nweek <= self.matchdate:
                     r = messagebox.askyesno('Atención', 'Si selecciona una fecha con más de siete días de diferencia: \n\n(1) Puede que los datos no estén actualizados al no haberse completado alguna jornada.\n(2) La previsión meteorológica no estará disponible.\n\n¿Desea continuar?')
                     if r == True:
-                        createpdf(combolocal.get(), combovisitante.get(), None)
+                        createpdf(combolocal.get(), combovisitante.get(), None, refteam)
                 elif today > self.matchdate:
                     messagebox.showwarning('Error', 'El partido no puede jugarse en el pasado.')
                 elif today == self.matchdate:
                     r = messagebox.askyesno('Atención', 'No es posible obtener la meteorología del mismo día del partido. ¿Desea continuar?')
                     if r == True:
-                        createpdf(combolocal.get(), combovisitante.get(), None)
+                        createpdf(combolocal.get(), combovisitante.get(), None, refteam)
                 else:
-                    createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate))
+                    createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate), refteam)
 
         self.root.destroy()
         self.wprevia = Tk()
         self.wprevia.title('RefApp')
-        self.wprevia.geometry('620x250')
+        self.wprevia.geometry('850x280')
         lbl = Label(self.wprevia, text='Elaborar previa de partido', padx=50, pady=10, font=("Helvetica Bold", 20))
         lbl.grid(column=0, row=0)
 
@@ -101,10 +102,31 @@ class App():
         lcal.grid(column=1, row=1)
         calendar.grid(column=1, row=2)
 
+        larb1 = Label(self.wprevia, text='Árbitro')
+        tarb1 = Entry(self.wprevia)
+        larb2 = Label(self.wprevia, text='Árbitro asistente 1')
+        tarb2 = Entry(self.wprevia)
+        larb3 = Label(self.wprevia, text='Árbitro asistente 2')
+        tarb3 = Entry(self.wprevia)
+        ldel = Label(self.wprevia, text='Delegado de partido')
+        tdel = Entry(self.wprevia)
+
+        laux = Label(self.wprevia, text='            ')
+        laux.grid(column=2, row=1)
+
+        larb1.grid(column=3, row=1)
+        tarb1.grid(column=3, row=2)
+        larb2.grid(column=3, row=3)
+        tarb2.grid(column=3, row=4)
+        larb3.grid(column=3, row=5)
+        tarb3.grid(column=3, row=6)
+        ldel.grid(column=3, row=7)
+        tdel.grid(column=3, row=8)
+
         atras = Button(self.wprevia, text="Atrás", command=self.principal)
-        atras.grid(column=1, row=6)
+        atras.grid(column=1, row=8)
         elaborar = Button(self.wprevia, text="Elaborar", command=check_create)
-        elaborar.grid(column=0, row=6)
+        elaborar.grid(column=0, row=8)
         self.wprevia.mainloop()
 
     def btn2(self):

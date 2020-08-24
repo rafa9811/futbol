@@ -106,7 +106,7 @@ def transform_color(color):
 
 ################################################################################
 
-def createpdf(equipo1, equipo2, date):
+def createpdf(equipo1, equipo2, date, refteam):
     print("Confeccionando PDF...")
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
@@ -165,10 +165,10 @@ def createpdf(equipo1, equipo2, date):
     c.drawText(tc)
 
     #Equipo Arbitral
-    arbitro = "D. Rafael Hidalgo Alejo"
-    aa1 = "D. Diego Retamar García"
-    aa2 = "D. José Adrián González Peláez"
-    dp = "D. nodata, nodata"
+    arbitro = "D. " + refteam[0]
+    aa1 = "D. " + refteam[1]
+    aa2 = "D. " + refteam[2]
+    dp = "D. " + refteam[3] 
     comite = "COMITÉ MADRILEÑO"
 
     eqa = c.beginText(45, h-195)

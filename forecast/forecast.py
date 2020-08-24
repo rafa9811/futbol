@@ -33,8 +33,6 @@ def get_id(town):
     driver.find_element_by_xpath("//*[@id='columns']/div/div[2]/div[2]/div[1]/div/form/input[5]").click()
 
     if not driver.current_url.startswith('http://www.aemet.es/es/eltiempo/prediccion/municipios?'):
-        print(driver.current_url)
-        print("Entra aqui")
         url = driver.current_url
         id = url.split("id")[-1]
         return id
@@ -50,7 +48,6 @@ def get_id(town):
 
 def download_xml(id):
     url = "http://www.aemet.es/xml/municipios/localidad_" + id + ".xml"
-    print(url)
     response = requests.get(url)
 
     with open(generic_path + '/forecast/data.xml', 'wb') as file:
@@ -58,6 +55,9 @@ def download_xml(id):
 
 
 def parse_xml(year, month, day):
+    if year == None or month == None or day == None:
+        return {'prob_precipitacion': '?', 'estado_cielo': '?', 'vientodir': '?', 'vientovel': '?', 'tmax': '?', 'tmin': '?'}
+
     tree = et.parse(generic_path + '/forecast/data.xml')
     root = tree.getroot()
     prediction = root.find('prediccion')
@@ -83,6 +83,9 @@ def parse_xml(year, month, day):
 
 
 def get_forecast(town, year, month, day):
-    id = get_id(town)
-    download_xml(id)
-    return parse_xml(year, month, day)
+    if year == None or month == None or day == None:
+        return parse_xml(year, month, day)
+    else:
+        id = get_id(town)
+        download_xml(id)
+        return parse_xml(year, month, day)

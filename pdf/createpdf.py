@@ -92,7 +92,10 @@ def drawJs(c, data, x_offset, y_offset, njugadores):
                 j+=1
 
 def pathIcon(id):
-    path = 'icons/' + str(id) + '.png'
+    if id == None:
+        path = 'icons/' + 'None.png'
+    else:
+        path = 'icons/' + str(id) + '.png'
     return path
 
 def transform_color(color):
@@ -104,7 +107,7 @@ def transform_color(color):
 ################################################################################
 
 def createpdf(equipo1, equipo2, date):
-    print("Confeccionando pdf...")
+    print("Confeccionando PDF...")
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
     global newh2 #Auxiliar height 2
@@ -269,15 +272,18 @@ def createpdf(equipo1, equipo2, date):
     h2.drawOn(c, 400, h-318)
 
     #El tiempo: prob_precipitacion, estado_cielo, vientodir, vientovel, tmax, tmin
-    print("Escaneando meteorología en la dirección y fecha determinadas...")
     eqa.setFont("Helvetica", 10)
     c.drawText(eqa)
 
     #tiempo = {'prob_precipitacion': '0', 'estado_cielo': '11', 'vientodir': 'O', 'vientovel': '5', 'tmax': '38', 'tmin': '22'}
     #date: 2020-07-21
-    date = date.split('-')
-    tiempo = get_forecast(city, date[0], date[1], date[2])
-    path = pathIcon(tiempo['estado_cielo'])
+    if date == None:
+        path = pathIcon(None)
+        tiempo = get_forecast(city, None, None, None)
+    else:
+        date = date.split('-')
+        tiempo = get_forecast(city, date[0], date[1], date[2])
+        path = pathIcon(tiempo['estado_cielo'])
     I = Image(path)
     I.drawHeight = 0.6*inch*I.drawHeight / I.drawWidth
     I.drawWidth = 0.6*inch
@@ -470,3 +476,5 @@ def createpdf(equipo1, equipo2, date):
 
     c.showPage()
     c.save()
+
+    print("PDF confeccionado.")

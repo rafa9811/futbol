@@ -60,13 +60,18 @@ class App():
             if self.matchdate == None or combolocal.get() == '' or combovisitante.get() == '':
                 messagebox.showwarning('Error', 'Antes de elaborar la previa debe seleccionar una fecha, equipo local y equipo visitante.')
             else:
-                actual = datetime.now()
-                nweek = actual + timedelta(days=7)
-                nweek = nweek.date()
+                nweek = (datetime.now() + timedelta(days=7)).date()
+                today = (datetime.now()).date()
                 if nweek <= self.matchdate:
                     r = messagebox.askyesno('Atención', 'Si selecciona una fecha con más de siete días de diferencia: \n\n(1) Puede que los datos no estén actualizados al no haberse completado alguna jornada.\n(2) La previsión meteorológica no estará disponible.\n\n¿Desea continuar?')
                     if r == True:
-                        createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate))
+                        createpdf(combolocal.get(), combovisitante.get(), None)
+                elif today > self.matchdate:
+                    messagebox.showwarning('Error', 'El partido no puede jugarse en el pasado.')
+                elif today == self.matchdate:
+                    r = messagebox.askyesno('Atención', 'No es posible obtener la meteorología del mismo día del partido. ¿Desea continuar?')
+                    if r == True:
+                        createpdf(combolocal.get(), combovisitante.get(), None)
                 else:
                     createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate))
 
@@ -121,10 +126,11 @@ class App():
             cal.destroy()
             top.destroy()
 
+        date = datetime.now().date()
         top = Toplevel(self.wprevia)
         cal = Calendar(top,
                        font="Arial 14", selectmode='day',
-                       cursor="hand1", year=2020, month=8, day=13)
+                       cursor="hand1", year=date.year, month=date.month, day=date.day)
         cal.pack(fill="both", expand=True)
         Button(top, text="Seleccionar", command=proc_date).pack()
 

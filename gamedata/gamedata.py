@@ -166,7 +166,7 @@ def process_dwl(temporada, team):
                     vislost += 1
 
     if flag == 0:
-        print('process_goals: El equipo introducido no se encuentra. Error')
+        print('process_dwl: El equipo introducido no se encuentra. Error')
         return -1
 
     draw = localdraw + visdraw

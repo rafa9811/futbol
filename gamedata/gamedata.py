@@ -110,8 +110,6 @@ def fileToModel(grupo):
 
 
 def process_goals(temporada, team):
-    against_goals = 0
-    favor_goals = 0
     local_against_goals = 0
     local_favor_goals = 0
     vis_against_goals = 0
@@ -130,12 +128,51 @@ def process_goals(temporada, team):
                     vis_against_goals += int(p.get_reslocal())
 
     if flag == 0:
-        print('El equipo introducido no se encuentra. Error')
+        print('process_goals: El equipo introducido no se encuentra. Error')
         return -1
 
     against_goals = local_against_goals + vis_against_goals
     favor_goals = local_favor_goals + vis_favor_goals
     return str(against_goals), str(favor_goals), str(local_against_goals), str(local_favor_goals), str(vis_against_goals), str(vis_favor_goals)
+
+
+def process_dwl(temporada, team):
+    localdraw = 0
+    localwon = 0
+    locallost = 0
+    visdraw = 0
+    viswon = 0
+    vislost = 0
+    flag = 0
+
+    for j in temporada.get_jornadas():
+        for p in j.get_partidos():
+            if p.get_local() == team:
+                flag = 1
+                if int(p.get_reslocal()) == int(p.get_resvisiting()):
+                    localdraw += 1
+                elif int(p.get_reslocal()) > int(p.get_resvisiting()):
+                    localwon += 1
+                elif int(p.get_reslocal()) < int(p.get_resvisiting()):
+                    locallost += 1
+
+            elif p.get_visiting() == team:
+                flag = 1
+                if int(p.get_reslocal()) == int(p.get_resvisiting()):
+                    visdraw += 1
+                elif int(p.get_reslocal()) < int(p.get_resvisiting()):
+                    viswon += 1
+                elif int(p.get_reslocal()) > int(p.get_resvisiting()):
+                    vislost += 1
+
+    if flag == 0:
+        print('process_goals: El equipo introducido no se encuentra. Error')
+        return -1
+
+    draw = localdraw + visdraw
+    won = localwon + viswon
+    lost = locallost + vislost
+    return str(draw), str(won), str(lost), str(localdraw), str(localwon), str(locallost), str(visdraw), str(viswon), str(vislost)
 
 
 def process_matchs(temporada, team):

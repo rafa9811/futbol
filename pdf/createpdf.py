@@ -168,7 +168,7 @@ def createpdf(equipo1, equipo2, date, refteam):
     arbitro = "D. " + refteam[0]
     aa1 = "D. " + refteam[1]
     aa2 = "D. " + refteam[2]
-    dp = "D. " + refteam[3] 
+    dp = "D. " + refteam[3]
     comite = "COMITÉ MADRILEÑO"
 
     eqa = c.beginText(45, h-195)
@@ -192,19 +192,21 @@ def createpdf(equipo1, equipo2, date, refteam):
     #Tablas de estadísitcas numéricas
     lm1 = process_matchs(temporadalocal, equipo1)
     lm2 = process_matchs(temporadavisitante, equipo2)
+    draw1, won1, lost1, localdraw1, localwon1, locallost1, visdraw1, viswon1, vislost1 = process_dwl(temporadalocal, equipo1)
+    draw2, won2, lost2, localdraw2, localwon2, locallost2, visdraw2, viswon2, vislost2 = process_dwl(temporadavisitante, equipo2)
     against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporadalocal, equipo1)
     against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporadavisitante, equipo2)
 
     data1 = [
     ['', 'PG', 'PE', 'PP', 'GF', 'GC'],
-    ['Tot', '20', '21', '22', favor1, against1],
-    ['Loc','20', '21', '22', local_favor1, local_against1],
+    ['Tot', won1, draw1, lost1, favor1, against1],
+    ['Loc', localwon1, localdraw1, locallost1, local_favor1, local_against1],
     ['Últ', lm1[0][0], lm1[1][0], lm1[2][0], lm1[3][0], lm1[4][0]]
     ]
     data2 = [
     ['PG', 'PE', 'PP', 'GF', 'GC', ''],
-    ['20', '21', '22', favor2, against2, 'Tot'],
-    ['20', '21', '22', vis_favor2, vis_against2, 'Vis'],
+    [won2, draw2, lost2, favor2, against2, 'Tot'],
+    [viswon2, visdraw2, vislost2, vis_favor2, vis_against2, 'Vis'],
     [lm2[0][0], lm2[1][0], lm2[2][0], lm2[3][0], lm2[4][0], 'Últ']
     ]
     t1 = Table(data1)

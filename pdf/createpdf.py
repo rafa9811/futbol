@@ -147,7 +147,7 @@ def createpdf(equipo1, equipo2, date, refteam):
     yl2 = [h-100, h-170]
 
     c.grid(xl1, yl1)
-    c.drawString(50, h-80, "Fecha")
+    c.drawString(60, h-87, date)
     c.drawString(178, h-80, "CATEGORÍA")
     c.drawString(155, h-93, "PREFERENTE, GR. " + grupo)
     hora = "12:00"

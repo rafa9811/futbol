@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-15" ?>
-<root id="28065" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.aemet.es/xsd/localidades.xsd">
+<root id="28061" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.aemet.es/xsd/localidades.xsd">
 	<origen>
 		<productor>Agencia Estatal de Meteorología - AEMET. Gobierno de España</productor>
 		<web>http://www.aemet.es</web>
-		<enlace>http://www.aemet.es/es/eltiempo/prediccion/municipios/getafe-id28065</enlace>
+		<enlace>http://www.aemet.es/es/eltiempo/prediccion/municipios/galapagar-id28061</enlace>
 		<language>es</language>
 		<copyright>&#169; AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</copyright>
 		<nota_legal>http://www.aemet.es/es/nota_legal</nota_legal>
 	</origen>
 	<elaborado>2020-08-25T18:55:36</elaborado>
-	<nombre>Getafe</nombre>
+	<nombre>Galapagar</nombre>
 	<provincia>Madrid</provincia>
 	<prediccion>
 		<dia fecha="2020-08-25">
@@ -43,24 +43,24 @@
 				<velocidad></velocidad>
 			</viento>
 			<viento periodo="12-24">
-				<direccion>O</direccion>
+				<direccion>S</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-06">
 				<direccion>N</direccion>
-				<velocidad>5</velocidad>
+				<velocidad>10</velocidad>
 			</viento>
 			<viento periodo="06-12">
-				<direccion>SE</direccion>
-				<velocidad>5</velocidad>
+				<direccion>S</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-18">
-				<direccion>O</direccion>
+				<direccion>S</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="18-24">
-				<direccion>O</direccion>
-				<velocidad>10</velocidad>
+				<direccion>N</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
 			<racha_max periodo="00-12"></racha_max>
@@ -70,27 +70,27 @@
 			<racha_max periodo="12-18"></racha_max>
 			<racha_max periodo="18-24"></racha_max>
 			<temperatura>
-				<maxima>36</maxima>
-				<minima>22</minima>
-				<dato hora="06">18</dato>
-				<dato hora="12">34</dato>
-				<dato hora="18">35</dato>
-				<dato hora="24">25</dato>
-			</temperatura>
-			<sens_termica>
-				<maxima>37</maxima>
+				<maxima>35</maxima>
 				<minima>18</minima>
 				<dato hora="06">18</dato>
-				<dato hora="12">34</dato>
-				<dato hora="18">35</dato>
-				<dato hora="24">25</dato>
+				<dato hora="12">32</dato>
+				<dato hora="18">32</dato>
+				<dato hora="24">24</dato>
+			</temperatura>
+			<sens_termica>
+				<maxima>35</maxima>
+				<minima>18</minima>
+				<dato hora="06">18</dato>
+				<dato hora="12">32</dato>
+				<dato hora="18">32</dato>
+				<dato hora="24">24</dato>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>55</maxima>
-				<minima>15</minima>
-				<dato hora="06">45</dato>
-				<dato hora="12">30</dato>
-				<dato hora="18">15</dato>
+				<maxima>40</maxima>
+				<minima>20</minima>
+				<dato hora="06">35</dato>
+				<dato hora="12">25</dato>
+				<dato hora="18">20</dato>
 				<dato hora="24">25</dato>
 			</humedad_relativa>
 			<uv_max>9</uv_max>
@@ -119,31 +119,31 @@
 			<estado_cielo periodo="18-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
 				<direccion>SO</direccion>
-				<velocidad>10</velocidad>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-12">
 				<direccion>SO</direccion>
-				<velocidad>10</velocidad>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-24">
 				<direccion>SO</direccion>
-				<velocidad>20</velocidad>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-06">
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
+				<direccion>N</direccion>
+				<velocidad>5</velocidad>
 			</viento>
 			<viento periodo="06-12">
 				<direccion>SO</direccion>
-				<velocidad>10</velocidad>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-18">
-				<direccion>SO</direccion>
-				<velocidad>20</velocidad>
+				<direccion>NO</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="18-24">
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
+				<direccion>N</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
 			<racha_max periodo="00-12"></racha_max>
@@ -153,27 +153,27 @@
 			<racha_max periodo="12-18"></racha_max>
 			<racha_max periodo="18-24"></racha_max>
 			<temperatura>
-				<maxima>38</maxima>
-				<minima>22</minima>
-				<dato hora="06">19</dato>
-				<dato hora="12">35</dato>
-				<dato hora="18">35</dato>
-				<dato hora="24">24</dato>
-			</temperatura>
-			<sens_termica>
-				<maxima>37</maxima>
+				<maxima>36</maxima>
 				<minima>18</minima>
 				<dato hora="06">19</dato>
-				<dato hora="12">35</dato>
-				<dato hora="18">35</dato>
-				<dato hora="24">24</dato>
+				<dato hora="12">33</dato>
+				<dato hora="18">33</dato>
+				<dato hora="24">25</dato>
+			</temperatura>
+			<sens_termica>
+				<maxima>36</maxima>
+				<minima>18</minima>
+				<dato hora="06">19</dato>
+				<dato hora="12">33</dato>
+				<dato hora="18">33</dato>
+				<dato hora="24">25</dato>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>40</maxima>
-				<minima>10</minima>
-				<dato hora="06">40</dato>
+				<maxima>30</maxima>
+				<minima>15</minima>
+				<dato hora="06">25</dato>
 				<dato hora="12">15</dato>
-				<dato hora="18">10</dato>
+				<dato hora="18">15</dato>
 				<dato hora="24">25</dato>
 			</humedad_relativa>
 			<uv_max>8</uv_max>
@@ -185,35 +185,35 @@
 			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
 			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
 			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
-			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="00-24" descripcion="Poco nuboso">12</estado_cielo>
 			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion="Poco nuboso">12</estado_cielo>
 			<viento periodo="00-24">
 				<direccion>SO</direccion>
 				<velocidad>5</velocidad>
 			</viento>
 			<viento periodo="00-12">
-				<direccion>SO</direccion>
-				<velocidad>5</velocidad>
+				<direccion>N</direccion>
+				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-24">
-				<direccion>O</direccion>
-				<velocidad>15</velocidad>
+				<direccion>NO</direccion>
+				<velocidad>10</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
 			<racha_max periodo="00-12"></racha_max>
 			<racha_max periodo="12-24"></racha_max>
 			<temperatura>
-				<maxima>37</maxima>
-				<minima>23</minima>
+				<maxima>35</maxima>
+				<minima>19</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>37</maxima>
-				<minima>20</minima>
+				<maxima>35</maxima>
+				<minima>19</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>40</maxima>
-				<minima>10</minima>
+				<maxima>50</maxima>
+				<minima>15</minima>
 			</humedad_relativa>
 			<uv_max>8</uv_max>
 		</dia>
@@ -224,34 +224,34 @@
 			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
 			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
 			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
-			<estado_cielo periodo="00-24" descripcion="Poco nuboso">12</estado_cielo>
-			<estado_cielo periodo="00-12" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="00-24" descripcion="Despejado">11</estado_cielo>
+			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
-				<direccion>O</direccion>
+				<direccion>NO</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-12">
-				<direccion>O</direccion>
-				<velocidad>15</velocidad>
+				<direccion>NO</direccion>
+				<velocidad>25</velocidad>
 			</viento>
 			<viento periodo="12-24">
 				<direccion>NO</direccion>
-				<velocidad>20</velocidad>
+				<velocidad>25</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
-			<racha_max periodo="00-12"></racha_max>
-			<racha_max periodo="12-24"></racha_max>
+			<racha_max periodo="00-12">60</racha_max>
+			<racha_max periodo="12-24">50</racha_max>
 			<temperatura>
-				<maxima>33</maxima>
-				<minima>18</minima>
+				<maxima>30</maxima>
+				<minima>15</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>33</maxima>
-				<minima>18</minima>
+				<maxima>31</maxima>
+				<minima>15</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>50</maxima>
+				<maxima>65</maxima>
 				<minima>15</minima>
 			</humedad_relativa>
 			<uv_max>8</uv_max>
@@ -262,19 +262,19 @@
 			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
 			<viento>
 				<direccion>N</direccion>
-				<velocidad>10</velocidad>
+				<velocidad>15</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
-				<maxima>25</maxima>
-				<minima>14</minima>
+				<maxima>21</maxima>
+				<minima>10</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>25</maxima>
-				<minima>14</minima>
+				<maxima>21</maxima>
+				<minima>10</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>60</maxima>
+				<maxima>70</maxima>
 				<minima>25</minima>
 			</humedad_relativa>
 			<uv_max>7</uv_max>
@@ -284,21 +284,21 @@
 			<cota_nieve_prov></cota_nieve_prov>
 			<estado_cielo descripcion="Despejado">11</estado_cielo>
 			<viento>
-				<direccion>NE</direccion>
-				<velocidad>5</velocidad>
+				<direccion>C</direccion>
+				<velocidad>0</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
-				<maxima>25</maxima>
-				<minima>11</minima>
+				<maxima>23</maxima>
+				<minima>8</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>25</maxima>
-				<minima>11</minima>
+				<maxima>23</maxima>
+				<minima>8</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>55</maxima>
-				<minima>20</minima>
+				<maxima>60</maxima>
+				<minima>15</minima>
 			</humedad_relativa>
 		</dia>
 		<dia fecha="2020-08-31">
@@ -306,21 +306,21 @@
 			<cota_nieve_prov></cota_nieve_prov>
 			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
 			<viento>
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
+				<direccion>S</direccion>
+				<velocidad>5</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
-				<maxima>28</maxima>
-				<minima>11</minima>
+				<maxima>26</maxima>
+				<minima>10</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>28</maxima>
-				<minima>11</minima>
+				<maxima>26</maxima>
+				<minima>10</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>55</maxima>
-				<minima>15</minima>
+				<maxima>50</maxima>
+				<minima>20</minima>
 			</humedad_relativa>
 		</dia>
 	</prediccion>

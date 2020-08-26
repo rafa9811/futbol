@@ -66,15 +66,15 @@ class App():
                 if nweek <= self.matchdate:
                     r = messagebox.askyesno('Atención', 'Si selecciona una fecha con más de siete días de diferencia: \n\n(1) Puede que los datos no estén actualizados al no haberse completado alguna jornada.\n(2) La previsión meteorológica no estará disponible.\n\n¿Desea continuar?')
                     if r == True:
-                        createpdf(combolocal.get(), combovisitante.get(), None, refteam)
+                        createpdf(combolocal.get(), combovisitante.get(), None, refteam, ttime.get())
                 elif today > self.matchdate:
                     messagebox.showwarning('Error', 'El partido no puede jugarse en el pasado.')
                 elif today == self.matchdate:
                     r = messagebox.askyesno('Atención', 'No es posible obtener la meteorología del mismo día del partido. ¿Desea continuar?')
                     if r == True:
-                        createpdf(combolocal.get(), combovisitante.get(), None, refteam)
+                        createpdf(combolocal.get(), combovisitante.get(), None, refteam, ttime.get())
                 else:
-                    createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate), refteam)
+                    createpdf(combolocal.get(), combovisitante.get(), str(self.matchdate), refteam, ttime.get())
 
         self.root.destroy()
         self.wprevia = Tk()
@@ -97,10 +97,15 @@ class App():
 
         s = Style(self.wprevia)
         s.theme_use('clam')
-        lcal = Label(self.wprevia, text='Introduzca la fecha del partido')
+        lcal = Label(self.wprevia, text='Seleccione la fecha del partido')
         calendar = Button(self.wprevia, text='Abrir calendario', command=self.calendar)
         lcal.grid(column=1, row=1)
         calendar.grid(column=1, row=2)
+
+        ltime = Label(self.wprevia, text='Introduzca la hora del partido')
+        ttime = Entry(self.wprevia)
+        ltime.grid(column=1, row=4)
+        ttime.grid(column=1, row=5)
 
         larb1 = Label(self.wprevia, text='Árbitro')
         tarb1 = Entry(self.wprevia)

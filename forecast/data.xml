@@ -8,17 +8,17 @@
 		<copyright>&#169; AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</copyright>
 		<nota_legal>http://www.aemet.es/es/nota_legal</nota_legal>
 	</origen>
-	<elaborado>2020-08-25T18:55:36</elaborado>
+	<elaborado>2020-08-26T12:59:47</elaborado>
 	<nombre>Galapagar</nombre>
 	<provincia>Madrid</provincia>
 	<prediccion>
 		<dia fecha="2020-08-25">
 			<prob_precipitacion periodo="00-24"></prob_precipitacion>
 			<prob_precipitacion periodo="00-12"></prob_precipitacion>
-			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
+			<prob_precipitacion periodo="12-24"></prob_precipitacion>
 			<prob_precipitacion periodo="00-06"></prob_precipitacion>
-			<prob_precipitacion periodo="06-12">0</prob_precipitacion>
-			<prob_precipitacion periodo="12-18">0</prob_precipitacion>
+			<prob_precipitacion periodo="06-12"></prob_precipitacion>
+			<prob_precipitacion periodo="12-18"></prob_precipitacion>
 			<prob_precipitacion periodo="18-24">0</prob_precipitacion>
 			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
 			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
@@ -29,10 +29,10 @@
 			<cota_nieve_prov periodo="18-24"></cota_nieve_prov>
 			<estado_cielo periodo="00-24" descripcion=""></estado_cielo>
 			<estado_cielo periodo="00-12" descripcion=""></estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion=""></estado_cielo>
 			<estado_cielo periodo="00-06" descripcion=""></estado_cielo>
-			<estado_cielo periodo="06-12" descripcion="Poco nuboso">12</estado_cielo>
-			<estado_cielo periodo="12-18" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="06-12" descripcion=""></estado_cielo>
+			<estado_cielo periodo="12-18" descripcion=""></estado_cielo>
 			<estado_cielo periodo="18-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
 				<direccion></direccion>
@@ -43,16 +43,16 @@
 				<velocidad></velocidad>
 			</viento>
 			<viento periodo="12-24">
-				<direccion>S</direccion>
-				<velocidad>15</velocidad>
+				<direccion></direccion>
+				<velocidad></velocidad>
 			</viento>
 			<viento periodo="00-06">
-				<direccion>N</direccion>
-				<velocidad>10</velocidad>
+				<direccion></direccion>
+				<velocidad></velocidad>
 			</viento>
 			<viento periodo="06-12">
-				<direccion>S</direccion>
-				<velocidad>15</velocidad>
+				<direccion></direccion>
+				<velocidad></velocidad>
 			</viento>
 			<viento periodo="12-18">
 				<direccion>S</direccion>
@@ -72,28 +72,28 @@
 			<temperatura>
 				<maxima>35</maxima>
 				<minima>18</minima>
-				<dato hora="06">18</dato>
-				<dato hora="12">32</dato>
+				<dato hora="06"></dato>
+				<dato hora="12"></dato>
 				<dato hora="18">32</dato>
 				<dato hora="24">24</dato>
 			</temperatura>
 			<sens_termica>
 				<maxima>35</maxima>
 				<minima>18</minima>
-				<dato hora="06">18</dato>
-				<dato hora="12">32</dato>
+				<dato hora="06"></dato>
+				<dato hora="12"></dato>
 				<dato hora="18">32</dato>
 				<dato hora="24">24</dato>
 			</sens_termica>
 			<humedad_relativa>
 				<maxima>40</maxima>
 				<minima>20</minima>
-				<dato hora="06">35</dato>
-				<dato hora="12">25</dato>
+				<dato hora="06"></dato>
+				<dato hora="12"></dato>
 				<dato hora="18">20</dato>
-				<dato hora="24">25</dato>
+				<dato hora="24">20</dato>
 			</humedad_relativa>
-			<uv_max>9</uv_max>
+			<uv_max></uv_max>
 		</dia>
 		<dia fecha="2020-08-26">
 			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
@@ -118,15 +118,15 @@
 			<estado_cielo periodo="12-18" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="18-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
-				<direccion>SO</direccion>
+				<direccion>S</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-12">
-				<direccion>SO</direccion>
+				<direccion>N</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-24">
-				<direccion>SO</direccion>
+				<direccion>O</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="00-06">
@@ -134,15 +134,15 @@
 				<velocidad>5</velocidad>
 			</viento>
 			<viento periodo="06-12">
-				<direccion>SO</direccion>
+				<direccion>S</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="12-18">
-				<direccion>NO</direccion>
+				<direccion>O</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<viento periodo="18-24">
-				<direccion>N</direccion>
+				<direccion>NO</direccion>
 				<velocidad>15</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
@@ -153,16 +153,16 @@
 			<racha_max periodo="12-18"></racha_max>
 			<racha_max periodo="18-24"></racha_max>
 			<temperatura>
-				<maxima>36</maxima>
-				<minima>18</minima>
+				<maxima>35</maxima>
+				<minima>19</minima>
 				<dato hora="06">19</dato>
 				<dato hora="12">33</dato>
 				<dato hora="18">33</dato>
 				<dato hora="24">25</dato>
 			</temperatura>
 			<sens_termica>
-				<maxima>36</maxima>
-				<minima>18</minima>
+				<maxima>35</maxima>
+				<minima>19</minima>
 				<dato hora="06">19</dato>
 				<dato hora="12">33</dato>
 				<dato hora="18">33</dato>
@@ -170,54 +170,15 @@
 			</sens_termica>
 			<humedad_relativa>
 				<maxima>30</maxima>
-				<minima>15</minima>
-				<dato hora="06">25</dato>
+				<minima>10</minima>
+				<dato hora="06">30</dato>
 				<dato hora="12">15</dato>
-				<dato hora="18">15</dato>
+				<dato hora="18">10</dato>
 				<dato hora="24">25</dato>
 			</humedad_relativa>
-			<uv_max>8</uv_max>
+			<uv_max></uv_max>
 		</dia>
 		<dia fecha="2020-08-27">
-			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
-			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
-			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
-			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
-			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
-			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
-			<estado_cielo periodo="00-24" descripcion="Poco nuboso">12</estado_cielo>
-			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
-			<estado_cielo periodo="12-24" descripcion="Poco nuboso">12</estado_cielo>
-			<viento periodo="00-24">
-				<direccion>SO</direccion>
-				<velocidad>5</velocidad>
-			</viento>
-			<viento periodo="00-12">
-				<direccion>N</direccion>
-				<velocidad>15</velocidad>
-			</viento>
-			<viento periodo="12-24">
-				<direccion>NO</direccion>
-				<velocidad>10</velocidad>
-			</viento>
-			<racha_max periodo="00-24"></racha_max>
-			<racha_max periodo="00-12"></racha_max>
-			<racha_max periodo="12-24"></racha_max>
-			<temperatura>
-				<maxima>35</maxima>
-				<minima>19</minima>
-			</temperatura>
-			<sens_termica>
-				<maxima>35</maxima>
-				<minima>19</minima>
-			</sens_termica>
-			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>15</minima>
-			</humedad_relativa>
-			<uv_max>8</uv_max>
-		</dia>
-		<dia fecha="2020-08-28">
 			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
 			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
 			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
@@ -228,6 +189,45 @@
 			<estado_cielo periodo="00-12" descripcion="Despejado">11</estado_cielo>
 			<estado_cielo periodo="12-24" descripcion="Despejado">11</estado_cielo>
 			<viento periodo="00-24">
+				<direccion>S</direccion>
+				<velocidad>15</velocidad>
+			</viento>
+			<viento periodo="00-12">
+				<direccion>NO</direccion>
+				<velocidad>15</velocidad>
+			</viento>
+			<viento periodo="12-24">
+				<direccion>NO</direccion>
+				<velocidad>25</velocidad>
+			</viento>
+			<racha_max periodo="00-24"></racha_max>
+			<racha_max periodo="00-12"></racha_max>
+			<racha_max periodo="12-24">35</racha_max>
+			<temperatura>
+				<maxima>35</maxima>
+				<minima>19</minima>
+			</temperatura>
+			<sens_termica>
+				<maxima>35</maxima>
+				<minima>19</minima>
+			</sens_termica>
+			<humedad_relativa>
+				<maxima>50</maxima>
+				<minima>15</minima>
+			</humedad_relativa>
+			<uv_max></uv_max>
+		</dia>
+		<dia fecha="2020-08-28">
+			<prob_precipitacion periodo="00-24">0</prob_precipitacion>
+			<prob_precipitacion periodo="00-12">0</prob_precipitacion>
+			<prob_precipitacion periodo="12-24">0</prob_precipitacion>
+			<cota_nieve_prov periodo="00-24"></cota_nieve_prov>
+			<cota_nieve_prov periodo="00-12"></cota_nieve_prov>
+			<cota_nieve_prov periodo="12-24"></cota_nieve_prov>
+			<estado_cielo periodo="00-24" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="00-12" descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo periodo="12-24" descripcion="Poco nuboso">12</estado_cielo>
+			<viento periodo="00-24">
 				<direccion>NO</direccion>
 				<velocidad>15</velocidad>
 			</viento>
@@ -240,21 +240,21 @@
 				<velocidad>25</velocidad>
 			</viento>
 			<racha_max periodo="00-24"></racha_max>
-			<racha_max periodo="00-12">60</racha_max>
+			<racha_max periodo="00-12">50</racha_max>
 			<racha_max periodo="12-24">50</racha_max>
 			<temperatura>
 				<maxima>30</maxima>
 				<minima>15</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>31</maxima>
+				<maxima>30</maxima>
 				<minima>15</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>65</maxima>
+				<maxima>70</maxima>
 				<minima>15</minima>
 			</humedad_relativa>
-			<uv_max>8</uv_max>
+			<uv_max></uv_max>
 		</dia>
 		<dia fecha="2020-08-29">
 			<prob_precipitacion>0</prob_precipitacion>
@@ -262,65 +262,65 @@
 			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
 			<viento>
 				<direccion>N</direccion>
-				<velocidad>15</velocidad>
+				<velocidad>20</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
 				<maxima>21</maxima>
-				<minima>10</minima>
+				<minima>11</minima>
 			</temperatura>
 			<sens_termica>
 				<maxima>21</maxima>
-				<minima>10</minima>
+				<minima>11</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>70</maxima>
+				<maxima>75</maxima>
 				<minima>25</minima>
 			</humedad_relativa>
-			<uv_max>7</uv_max>
+			<uv_max></uv_max>
 		</dia>
 		<dia fecha="2020-08-30">
 			<prob_precipitacion>0</prob_precipitacion>
 			<cota_nieve_prov></cota_nieve_prov>
-			<estado_cielo descripcion="Despejado">11</estado_cielo>
+			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
 			<viento>
-				<direccion>C</direccion>
-				<velocidad>0</velocidad>
+				<direccion>N</direccion>
+				<velocidad>5</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
-				<maxima>23</maxima>
+				<maxima>22</maxima>
 				<minima>8</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>23</maxima>
+				<maxima>22</maxima>
 				<minima>8</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>60</maxima>
-				<minima>15</minima>
+				<maxima>70</maxima>
+				<minima>20</minima>
 			</humedad_relativa>
 		</dia>
 		<dia fecha="2020-08-31">
 			<prob_precipitacion>0</prob_precipitacion>
 			<cota_nieve_prov></cota_nieve_prov>
-			<estado_cielo descripcion="Poco nuboso">12</estado_cielo>
+			<estado_cielo descripcion="Despejado">11</estado_cielo>
 			<viento>
-				<direccion>S</direccion>
+				<direccion>SE</direccion>
 				<velocidad>5</velocidad>
 			</viento>
 			<racha_max></racha_max>
 			<temperatura>
-				<maxima>26</maxima>
-				<minima>10</minima>
+				<maxima>24</maxima>
+				<minima>8</minima>
 			</temperatura>
 			<sens_termica>
-				<maxima>26</maxima>
-				<minima>10</minima>
+				<maxima>24</maxima>
+				<minima>8</minima>
 			</sens_termica>
 			<humedad_relativa>
-				<maxima>50</maxima>
-				<minima>20</minima>
+				<maxima>60</maxima>
+				<minima>15</minima>
 			</humedad_relativa>
 		</dia>
 	</prediccion>

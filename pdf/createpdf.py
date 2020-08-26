@@ -106,7 +106,7 @@ def transform_color(color):
 
 ################################################################################
 
-def createpdf(equipo1, equipo2, date, refteam):
+def createpdf(equipo1, equipo2, date, refteam, time):
     print("Confeccionando PDF...")
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
@@ -150,8 +150,7 @@ def createpdf(equipo1, equipo2, date, refteam):
     c.drawString(60, h-87, date)
     c.drawString(178, h-80, "CATEGORÍA")
     c.drawString(155, h-93, "PREFERENTE, GR. " + grupo)
-    hora = "12:00"
-    c.drawString(300, h-87, hora)
+    c.drawString(300, h-87, time)
 
     jornada = "22"
     iv = "Vuelta (Ida: 0-2)"

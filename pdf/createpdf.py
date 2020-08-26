@@ -106,21 +106,21 @@ def transform_color(color):
 
 ################################################################################
 
-def createpdf(equipo1, equipo2, date, refteam, time):
+def createpdf(team1, team2, date, refteam, time):
     print("Confeccionando PDF...")
     w, h = A4 #595.2 puntos de ancho (width) y 841.8 puntos de alto (height).
     global newh #Auxiliar height
     global newh2 #Auxiliar height 2
-    grupo1 = get_group(equipo1)
-    grupo2 = get_group(equipo2)
-    if grupo1 != grupo2:
-        grupo = '?'
+    group1 = get_group(team1)
+    group2 = get_group(team2)
+    if group1 != group2:
+        group = '?'
     else:
-        grupo = grupo1
+        group = group1
 
-    temporadalocal = fileToModel(grupo1) #Current season
-    temporadavisitante = fileToModel(grupo2)
-    city = get_city(equipo1)
+    temporadalocal = fileToModel(group1) #Current season
+    temporadavisitante = fileToModel(group2)
+    city = get_city(team1)
 
     c = canvas.Canvas("previa.pdf", pagesize=A4)
     c.setFont("Helvetica", 12)
@@ -129,7 +129,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     c.drawString(235, h - 50, "PREVIA DE PARTIDO")
 
     #Tabla de equipos
-    data = [[equipo1.upper(), equipo2.upper()]]
+    data = [[team1.upper(), team2.upper()]]
     t = Table(data, colWidths=[255, 255], rowHeights=[70])
     t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.lavender),
     ('INNERGRID', (0,0), (-1,-1), 1, colors.black),
@@ -149,7 +149,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     c.grid(xl1, yl1)
     c.drawString(60, h-87, date)
     c.drawString(178, h-80, "CATEGORÍA")
-    c.drawString(155, h-93, "PREFERENTE, GR. " + grupo)
+    c.drawString(155, h-93, "PREFERENTE, GR. " + group)
     c.drawString(300, h-87, time)
 
     journey = str(temporadalocal.get_njornadas() + 1)
@@ -189,12 +189,12 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     c.drawString(199, h-280, dp + " - " + comite)
 
     #Tablas de estadísitcas numéricas
-    lm1 = process_matchs(temporadalocal, equipo1)
-    lm2 = process_matchs(temporadavisitante, equipo2)
-    draw1, won1, lost1, localdraw1, localwon1, locallost1, visdraw1, viswon1, vislost1 = process_dwl(temporadalocal, equipo1)
-    draw2, won2, lost2, localdraw2, localwon2, locallost2, visdraw2, viswon2, vislost2 = process_dwl(temporadavisitante, equipo2)
-    against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporadalocal, equipo1)
-    against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporadavisitante, equipo2)
+    lm1 = process_matchs(temporadalocal, team1)
+    lm2 = process_matchs(temporadavisitante, team2)
+    draw1, won1, lost1, localdraw1, localwon1, locallost1, visdraw1, viswon1, vislost1 = process_dwl(temporadalocal, team1)
+    draw2, won2, lost2, localdraw2, localwon2, locallost2, visdraw2, viswon2, vislost2 = process_dwl(temporadavisitante, team2)
+    against1, favor1, local_against1, local_favor1, vis_against1, vis_favor1 = process_goals(temporadalocal, team1)
+    against2, favor2, local_against2, local_favor2, vis_against2, vis_favor2 = process_goals(temporadavisitante, team2)
 
     data1 = [
     ['', 'PG', 'PE', 'PP', 'GF', 'GC'],
@@ -298,7 +298,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     c.drawString(323, h-342, tiempo['tmin'] + 'ºC')
 
     #Equipamiento1
-    plfirstkit = get_player_first_kit(equipo1)
+    plfirstkit = get_player_first_kit(team1)
     shirt1 = transform_color(plfirstkit['shirt1'])
     shirt2 = transform_color(plfirstkit['shirt2'])
     shorts1 = transform_color(plfirstkit['shorts1'])
@@ -328,7 +328,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     teq1.drawOn(c, 45, h-470)
 
     #Equipamiento2
-    plfirstkit = get_player_first_kit(equipo2)
+    plfirstkit = get_player_first_kit(team2)
     shirt1 = transform_color(plfirstkit['shirt1'])
     shirt2 = transform_color(plfirstkit['shirt2'])
     shorts1 = transform_color(plfirstkit['shorts1'])
@@ -358,7 +358,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     teq2.drawOn(c, 310, h-470)
 
     #Portero1
-    plfirstkit = get_gk_first_kit(equipo1)
+    plfirstkit = get_gk_first_kit(team1)
     shirt1 = transform_color(plfirstkit['shirt1'])
     shirt2 = transform_color(plfirstkit['shirt2'])
     shorts1 = transform_color(plfirstkit['shorts1'])
@@ -388,7 +388,7 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     tp1.drawOn(c, 45, h-540)
 
     #Portero2
-    plfirstkit = get_gk_first_kit(equipo2)
+    plfirstkit = get_gk_first_kit(team2)
     shirt1 = transform_color(plfirstkit['shirt1'])
     shirt2 = transform_color(plfirstkit['shirt2'])
     shorts1 = transform_color(plfirstkit['shorts1'])
@@ -454,8 +454,8 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     #Equipo técnico 1
     eqa.setFont("Helvetica", 10)
     c.drawText(eqa)
-    oficiales1 = get_coachs(equipo1)
-    oficiales2 = get_coachs(equipo2)
+    oficiales1 = get_coachs(team1)
+    oficiales2 = get_coachs(team2)
     drawCt(c, oficiales1, 45, h-196.8, len(oficiales1))
     drawCt(c, oficiales2, 310, h-196.8, len(oficiales2))
 

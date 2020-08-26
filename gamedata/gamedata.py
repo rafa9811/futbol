@@ -79,9 +79,10 @@ def get_game_data(grupo):
         return
 
 
-def gd_toFile(grupo):
-    file = open(get_path(grupo), 'w')
-    file.write(get_game_data(grupo).toString())
+def gd_toFile(group):
+    file = open(get_path(group), 'w')
+    season = get_game_data(group)
+    file.write(season.toString())
     file.close()
 
 

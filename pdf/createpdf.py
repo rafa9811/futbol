@@ -152,9 +152,9 @@ def createpdf(equipo1, equipo2, date, refteam, time):
     c.drawString(155, h-93, "PREFERENTE, GR. " + grupo)
     c.drawString(300, h-87, time)
 
-    jornada = "22"
+    journey = str(temporadalocal.get_njornadas() + 1)
     iv = "Vuelta (Ida: 0-2)"
-    c.drawString(370, h-80, "Jornada " + jornada)
+    c.drawString(370, h-80, "Jornada " + journey)
     c.drawString(358, h-93, iv)
 
     tipocampo = "(HA)"

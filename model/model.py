@@ -70,3 +70,6 @@ class Temporada:
 
     def get_jornadas(self):
         return self.jornadas
+
+    def get_njornadas(self):
+        return len(self.jornadas)
